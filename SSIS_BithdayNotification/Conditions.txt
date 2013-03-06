@@ -1,0 +1,1 @@
+DAY(ModifiedDate) == DAY(GETDATE()) && MONTH(ModifiedDate) == MONTH(GETDATE()) && !NULL(TelephoneNumber)
