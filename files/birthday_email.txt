@@ -1,0 +1,5 @@
+Hello {_FirstName_} {_LastName_}, 
+
+We at JMMB want to wish you a happy birthday!
+
+Yours truly,
