@@ -1,4 +1,4 @@
-Dear{_Coloum5_} {_Coloum2_} {Coloum4_}.{_Coloum3_},
+Dear {_Coloum5_} {_Coloum2_} {_Coloum4_}. {_Coloum3_},
 
 We at JMMB just want to take this opertunity to wish you have happy birthday today. 
 May you be ever prosperous and blessed.
