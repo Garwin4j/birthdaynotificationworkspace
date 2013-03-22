@@ -1,1 +1,1 @@
-Hello {_FirstName_} {_LastName_}. We at JMMB just want to take this opertunity to wish you have happy birthday today. May you be ever prosperous and blessed.
+Hello {_Coloum5_} {_Coloum2_} {_Coloum3_}. We at JMMB just want to take this opertunity to wish you have happy birthday today, {_Coloum1_}. May you be ever prosperous and blessed.
