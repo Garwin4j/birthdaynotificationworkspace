@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{D183A3D8-5FD8-494B-B014-37F57B35E655}") = "SSIS_BithdayNotification", "SSIS_BithdayNotification\SSIS_BithdayNotification.dtproj", "{479BC6EF-60D5-499C-8E6D-B73B8056D8A9}"
+Project("{D183A3D8-5FD8-494B-B014-37F57B35E655}") = "JMMBCustomerNotification", "SSIS_BithdayNotification\JMMBCustomerNotification.dtproj", "{479BC6EF-60D5-499C-8E6D-B73B8056D8A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -28,8 +28,8 @@
   </Configurations>
   <DTSPackages>
     <DtsPackage FormatVersion="3">
-      <Name>Package.dtsx</Name>
-      <FullPath>Package.dtsx</FullPath>
+      <Name>JMMBCustomerNotificationPackage.dtsx</Name>
+      <FullPath>JMMBCustomerNotificationPackage.dtsx</FullPath>
       <References />
     </DtsPackage>
   </DTSPackages>
