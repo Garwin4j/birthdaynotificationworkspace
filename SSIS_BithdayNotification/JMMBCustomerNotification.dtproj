@@ -32,5 +32,10 @@
       <FullPath>JMMBCustomerNotificationPackage.dtsx</FullPath>
       <References />
     </DtsPackage>
+    <DtsPackage FormatVersion="3">
+      <Name>JMMBCustomerFileUpdatePackage.dtsx</Name>
+      <FullPath>JMMBCustomerFileUpdatePackage.dtsx</FullPath>
+      <References />
+    </DtsPackage>
   </DTSPackages>
 </Project>
