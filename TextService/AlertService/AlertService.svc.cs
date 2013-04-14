@@ -11,7 +11,7 @@ using System.IO;
 namespace AlertService
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
-    public class AlertService : IAlertService
+    public class AlertService : IAlertService, ISMSService
     {
         static TraceSource trace;
       
@@ -46,6 +46,11 @@ namespace AlertService
                 trace.TraceInformation(String.Format("Send Email to {0}{1}Message: {2}", EmailAddress, Environment.NewLine, Body));
                 return "Success";
             }
+        }
+
+        public sendSMSResponse sendSMS(sendSMS request)
+        {
+            throw new NotImplementedException();
         }
     }
 }

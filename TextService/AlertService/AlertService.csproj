@@ -67,6 +67,7 @@
     </Compile>
     <Compile Include="IAlertService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SMSService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

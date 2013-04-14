@@ -37,5 +37,10 @@
       <FullPath>JMMBCustomerFileUpdatePackage.dtsx</FullPath>
       <References />
     </DtsPackage>
+    <DtsPackage FormatVersion="0">
+      <Name>JMMBBulkCustomerFileUpdatePackage.dtsx</Name>
+      <FullPath>JMMBBulkCustomerFileUpdatePackage.dtsx</FullPath>
+      <References />
+    </DtsPackage>
   </DTSPackages>
 </Project>

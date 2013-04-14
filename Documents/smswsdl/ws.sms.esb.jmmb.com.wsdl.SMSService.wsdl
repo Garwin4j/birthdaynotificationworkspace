@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ws.sms.esb.jmmb.com/wsdl/SMSService/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://ws.sms.esb.jmmb.com/" name="SMSService" targetNamespace="http://ws.sms.esb.jmmb.com/wsdl/SMSService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:import namespace="http://ws.sms.esb.jmmb.com/" location="http://intrasrv-ut-dv:9191/esb/SMSService?wsdl=SMSService.wsdl" />
+  <wsdl:types />
+  <wsdl:binding name="SMSServiceSoapBinding" type="ns1:SMSService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="sendSMS">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="sendSMS">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="sendSMSResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SMSService">
+    <wsdl:port name="SOAPOverHTTP" binding="tns:SMSServiceSoapBinding">
+      <soap:address location="http://intrasrv-ut-dv:9191/esb/SMSService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
