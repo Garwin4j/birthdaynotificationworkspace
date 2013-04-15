@@ -37,7 +37,7 @@
       <FullPath>JMMBCustomerFileUpdatePackage.dtsx</FullPath>
       <References />
     </DtsPackage>
-    <DtsPackage FormatVersion="0">
+    <DtsPackage FormatVersion="3">
       <Name>JMMBBulkCustomerFileUpdatePackage.dtsx</Name>
       <FullPath>JMMBBulkCustomerFileUpdatePackage.dtsx</FullPath>
       <References />
