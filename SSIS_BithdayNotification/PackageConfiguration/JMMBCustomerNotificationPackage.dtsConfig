@@ -1,1 +1,15 @@
-<?xml version="1.0"?><DTSConfiguration><DTSConfigurationHeading><DTSConfigurationFileInfo GeneratedBy="EVLITU-7273A11A\Administrator" GeneratedFromPackageName="JMMBCustomerNotificationPackage" GeneratedFromPackageID="{D059C79A-F7CC-4122-A266-50C120995715}" GeneratedDate="21/04/2013 12:08:52 PM"/></DTSConfigurationHeading><Configuration ConfiguredType="Property" Path="\Package.Connections[EmailService].Properties[ServerURL]" ValueType="String"><ConfiguredValue>http://localhost:1060/AlertService.svc</ConfiguredValue></Configuration><Configuration ConfiguredType="Property" Path="\Package.Connections[LocalHost.JMMB_Notification].Properties[ConnectionString]" ValueType="String"><ConfiguredValue>Data Source=.;Initial Catalog=JMMB_CustomerNotification;Integrated Security=True;Persist Security Info=False;Application Name=SSIS-JMMBCustomerNotificationPackage-{3501384A-658D-48EF-A080-3A45CF3BDEF0}LocalHost.JMMB_Notification;</ConfiguredValue></Configuration><Configuration ConfiguredType="Property" Path="\Package.Connections[SMSService].Properties[ServerURL]" ValueType="String"><ConfiguredValue>http://localhost:1060/AlertService.svc</ConfiguredValue></Configuration></DTSConfiguration>
+<?xml version="1.0"?>
+<DTSConfiguration>
+	<DTSConfigurationHeading>
+		<DTSConfigurationFileInfo GeneratedBy="EVLITU-7273A11A\Administrator" GeneratedFromPackageName="JMMBCustomerNotificationPackage" GeneratedFromPackageID="{D059C79A-F7CC-4122-A266-50C120995715}" GeneratedDate="21/04/2013 12:08:52 PM"/>
+	</DTSConfigurationHeading>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[EmailService].Properties[ServerURL]" ValueType="String">
+		<ConfiguredValue>http://localhost:1060/AlertService.svc</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[LocalHost.JMMB_Notification].Properties[ConnectionString]" ValueType="String">
+		<ConfiguredValue>Data Source=.;Initial Catalog=JMMB_CustomerNotification;Integrated Security=True;Persist Security Info=False;Application Name=SSIS-JMMBCustomerNotificationPackage-{3501384A-658D-48EF-A080-3A45CF3BDEF0}LocalHost.JMMB_Notification;</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[SMSService].Properties[ServerURL]" ValueType="String">
+		<ConfiguredValue>http://localhost:1060/AlertService.svc</ConfiguredValue>
+	</Configuration>
+</DTSConfiguration>
