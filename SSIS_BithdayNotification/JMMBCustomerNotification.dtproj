@@ -33,11 +33,6 @@
       <References />
     </DtsPackage>
     <DtsPackage FormatVersion="3">
-      <Name>JMMBCustomerFileUpdatePackage.dtsx</Name>
-      <FullPath>JMMBCustomerFileUpdatePackage.dtsx</FullPath>
-      <References />
-    </DtsPackage>
-    <DtsPackage FormatVersion="3">
       <Name>JMMBBulkCustomerFileUpdatePackage.dtsx</Name>
       <FullPath>JMMBBulkCustomerFileUpdatePackage.dtsx</FullPath>
       <References />
