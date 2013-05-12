@@ -10,8 +10,8 @@
 <DTS:Property DTS:Name="PackagePriorityClass">0</DTS:Property>
 <DTS:Property DTS:Name="VersionMajor">1</DTS:Property>
 <DTS:Property DTS:Name="VersionMinor">0</DTS:Property>
-<DTS:Property DTS:Name="VersionBuild">75</DTS:Property>
-<DTS:Property DTS:Name="VersionGUID">{82F363CC-057F-4896-8BDD-80CBA69BE30B}</DTS:Property>
+<DTS:Property DTS:Name="VersionBuild">88</DTS:Property>
+<DTS:Property DTS:Name="VersionGUID">{DF757A1D-DAD4-4F67-9F1F-23BF37570296}</DTS:Property>
 <DTS:Property DTS:Name="EnableConfig">-1</DTS:Property>
 <DTS:Property DTS:Name="CheckpointFileName"></DTS:Property>
 <DTS:Property DTS:Name="SaveCheckpoints">0</DTS:Property>
@@ -399,7 +399,7 @@
 <DTS:Property DTS:Name="ObjectName">MissingInformationFile</DTS:Property>
 <DTS:Property DTS:Name="DTSID">{0E7C8F99-B85C-42C5-AC26-62A89C5B18B6}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
-<DTS:Property DTS:Name="CreationName">FLATFILE</DTS:Property><DTS:PropertyExpression DTS:Name="ConnectionString">@[User::MissingInformationFolder]+ REPLACE( @[User::NotificationName] + "_"+ (DT_WSTR, 50)(DT_DBTIMESTAMP) @[System::StartTime]+".log",":","_")</DTS:PropertyExpression><DTS:ObjectData><DTS:ConnectionManager>
+<DTS:Property DTS:Name="CreationName">FLATFILE</DTS:Property><DTS:PropertyExpression DTS:Name="ConnectionString">@[User::MissingInformationFolder]+"MissingInfo_"+ REPLACE( @[User::NotificationName] + "_"+ (DT_WSTR, 50)(DT_DBTIMESTAMP) @[System::StartTime]+".log",":","_")</DTS:PropertyExpression><DTS:ObjectData><DTS:ConnectionManager>
 <DTS:Property DTS:Name="FileUsageType">0</DTS:Property>
 <DTS:Property DTS:Name="Format">Delimited</DTS:Property>
 <DTS:Property DTS:Name="LocaleID">8201</DTS:Property>
@@ -476,7 +476,7 @@
 <DTS:Property DTS:Name="DTSID">{3E8667D3-AA74-49AA-BBA0-562EDE6EE99A}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:FlatFileColumn>
-<DTS:Property DTS:Name="ConnectionString">C:\customerfiles\_2013-04-28 11_46_41.log</DTS:Property></DTS:ConnectionManager></DTS:ObjectData></DTS:ConnectionManager>
+<DTS:Property DTS:Name="ConnectionString">C:\customerfiles\MissingInfo__2013-05-08 20_18_24.log</DTS:Property></DTS:ConnectionManager></DTS:ObjectData></DTS:ConnectionManager>
 <DTS:ConnectionManager>
 <DTS:Property DTS:Name="DelayValidation">0</DTS:Property>
 <DTS:Property DTS:Name="ObjectName">NotificationDB</DTS:Property>
@@ -1128,7 +1128,7 @@ public class ScriptMain : UserComponent
         }
         else if (Row.ExeptionChannel == "Text")
         {
-            if (Row.NotificationChannel == "Both")
+            if (Row.NotificationChannel == "Both" || Row.NotificationChannel == "Email")
             {
                 Row.NotificationChannel = "Email";
             }
@@ -1139,7 +1139,7 @@ public class ScriptMain : UserComponent
         }
         else if (Row.ExeptionChannel == "Email")
         {
-            if (Row.NotificationChannel == "Both")
+            if (Row.NotificationChannel == "Both" || Row.NotificationChannel == "Text")
             {
                 Row.NotificationChannel = "Text";
             }
@@ -1698,113 +1698,113 @@ public class Variables
 ]]></arrayElement></arrayElements></property>
 <property id="833" name="BinaryCode" dataType="System.String" state="cdata" isArray="true" description="Stores the binary representation of the component" typeConverter="" UITypeEditor="" containsID="false" expressionType="None"><arrayElements arrayElementCount="2"><arrayElement dataType="System.String"><![CDATA[\bin\release\sc_817396a0256b4ef08ec012b315f098c8.csproj.dll]]></arrayElement><arrayElement dataType="System.String"><![CDATA[TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
-ZGUuDQ0KJAAAAAAAAABQRQAATAEDAAD2hlEAAAAAAAAAAOAAAiELAQgAABQAAAAIAAAAAAAArjMA
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAK6fj1EAAAAAAAAAAOAAAiELAQgAABQAAAAIAAAAAAAAzjMA
 AAAgAAAAQAAAAABAAAAgAAAAAgAABAAAAAAAAAAEAAAAAAAAAACAAAAAAgAAAAAAAAMAQIUAABAA
-ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAFgzAABTAAAAAEAAALgEAAAAAAAAAAAAAAAAAAAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAIAzAABLAAAAAEAAALgEAAAAAAAAAAAAAAAAAAAA
 AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAtBMAAAAgAAAAFAAAAAIA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAA1BMAAAAgAAAAFAAAAAIA
 AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAALgEAAAAQAAAAAYAAAAWAAAAAAAAAAAAAAAAAABAAABA
-LnJlbG9jAAAMAAAAAGAAAAACAAAAHAAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAACQ
-MwAAAAAAAEgAAAACAAUAOCMAACAQAAABAAAAAAAAAIAiAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAH4CKAwAAAoCAnMFAAAGfQEAAAQCAnMGAAAGfQIAAAQqcgMg
-PgMAADMTAgQCAygNAAAKcwcAAAZvAwAABipKKwcCA28EAAAGA28QAAAGLfEqBio6AigOAAAKAgN9
-AwAABCo6AigOAAAKAgN9BAAABComAgMEKA8AAAoqUgJ7EAAACgJ7EQAAChaUbxIAAAoqJgIWAygT
-AAAKKiICFigUAAAKKloDLAgCFigVAAAKKnIBAABwcxYAAAp6UgJ7EAAACgJ7EQAACheUbxIAAAoq
-JgIXAygTAAAKKiICFygUAAAKKloDLAgCFygVAAAKKnIBAABwcxYAAAp6HgIoFwAACioeAigYAAAK
-Kh4CKBoAAAoqHgIoGwAACioDMAIAlgAAAAAAAAADbwwAAAZyngAAcCgcAAAKLAwDcqgAAHBvCQAA
-BioDbwwAAAZysgAAcCgcAAAKLCoDbwgAAAZyngAAcCgcAAAKLAwDcrwAAHBvCQAABioDcqgAAHBv
-CQAABioDbwwAAAZyvAAAcCgcAAAKLCkDbwgAAAZyngAAcCgcAAAKLAwDcrIAAHBvCQAABioDcqgA
-AHBvCQAABioeAigBAAAGKhp+BQAABCoucxcAAAaABQAABCoeAigeAAAKKh4CKA4AAAoqAAAAEzAD
-AC0AAAABAAARfgYAAAQtIHLIAABw0AgAAAIoIAAACm8hAAAKcyIAAAoKBoAGAAAEfgYAAAQqGn4H
-AAAEKh4CgAcAAAQqtAAAAM7K774BAAAAkQAAAGxTeXN0ZW0uUmVzb3VyY2VzLlJlc291cmNlUmVh
-ZGVyLCBtc2NvcmxpYiwgVmVyc2lvbj0yLjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tl
-eVRva2VuPWI3N2E1YzU2MTkzNGUwODkjU3lzdGVtLlJlc291cmNlcy5SdW50aW1lUmVzb3VyY2VT
-ZXQCAAAAAAAAAAAAAABQQURQQURQtAAAAEJTSkIBAAEAAAAAAAwAAAB2Mi4wLjUwNzI3AAAAAAUA
-bAAAAJgFAAAjfgAABAYAAEQHAAAjU3RyaW5ncwAAAABIDQAASAEAACNVUwCQDgAAEAAAACNHVUlE
-AAAAoA4AAIABAAAjQmxvYgAAAAAAAAACAAABVxWiAQkBAAAA+gEzABYAAAEAAAAcAAAACAAAAAcA
-AAAcAAAADgAAACMAAAAOAAAAAQAAAAMAAAAHAAAADAAAAAEAAAAEAAAAAQAAAAAACgABAAAAAAAG
-APwA2wAKABwBFQEGACMB2wAOAEUBMAESAIQB2wAKAF0DTAMKAI4DeQMKACcEFQQKAD4EFQQKAFsE
-FQQKAHoEFQQKAJMEFQQKAKwEFQQKAMcEFQQKAOIEFQQKAPsEFQQKADQFFAUKAFQFFAUKANAFFQEG
-AOoF2wAKABEGFQEKACQGFAUKAFkGRgYKAHYGFQEKAHsGFQEKAJ8GFQQOAMsGtQYOAOQGtQYAAAAA
-AQAAAAAAAQABAAEAEAA5AAAABQABAAEAAQAQAEcAAAAJAAMABQABABAAUwAAAAkABAAGAAEAEABd
-AAAADQAFAAcAAQAQAGoAAAAIAAUAEgAAARAAdQB+ABEABQAWAAAAEAC0AH4ACQAGABkABgBHABMA
-BgBTABcAAQDLASwAAQDLASwAEQAoA1gAEQBtA2YAEQCaA2oAUCAAAAAAhhhdARsAAQBwIAAAAADG
-AJMBHwABAI0gAAAAAMYBoAEmAAMAoCAAAAAAxgG0ASYABACiIAAAAACGGF0BMAAFALEgAAAAAIYY
-XQEwAAYAwCAAAAAAhhhdATYABwDKIAAAAACGCNsBPgAJAN8gAAAAAIYI8wFCAAkA6SAAAAAAhggL
-AkcACgDyIAAAAACGCCoCSwAKAAkhAAAAAIYISQI+AAsAHiEAAAAAhghdAkIACwAoIQAAAACGCHEC
-RwAMADEhAAAAAIYIjAJLAAwASCEAAAAAhgCnAkcADQBQIQAAAACGAK8CRwANAFghAAAAAMYAEQMb
-AA0AYCEAAAAAxgAcAxsADQBoIQAAAADGALQBJgANAAoiAAAAAIYYXQEbAA4AEiIAAAAAlgg4A1wA
-DgAlIgAAAACGGF0BGwAOABkiAAAAAJEYPwa2AA4ALSIAAAAAgxhdARsADgA4IgAAAACTCKoDbgAO
-AHEiAAAAAJMIvgNzAA4AeCIAAAAAkwjKA3gADgAAAAEA3gMAAAIA5gMAAAEA5gMAAAEA7QMAAAEA
-8QMAAAEA8QMAAAEA5gMAAAIA+wMAAAEADwQAAAEADwQAAAEADwQAAAEADwQAAAEA7QMAAAEADwRB
-AF0BQgBJAF0BQgBRAF0BQgBZAF0BQgBhAF0BQgBpAF0BQgBxAF0BQgB5AF0BQgCBAF0BQgCJAF0B
-iACRAF0BGwAJAF0BGwAJAJ0FjQARAF0BGwAZAF0BNgAZAOYDkwAZAPsDlwApAK4FmwAZALgFoAAZ
-AMEFpgAZAMgFiACZAF0BQgAZAKcCRwAZAK8CRwChAF0BGwAJABEDGwAJABwDGwCpABgGsACxAF0B
-GwAhAF0BGwC5AF0BGwDBAI0GugDBAKgGwQAxAF0BxgDZAF0B0gAuABMAEQEuABsAEQEuAFsAYQEu
-AAsA4QAuACMAFwEuACsA4QAuADMALwEuADsAEQEuAFMAWAGhAOsAqwDDAMsAqwDJABsB2ADpABsB
-2AADAfsAqwDNAAUAAQAHAAUACAAGAAAAuwJQAAAAzwJUAAAA6gJQAAAA+gJUAAAARANhAAAAXQN+
-AAAA1gODAAIACAADAAEACQADAAIACgAFAAEACwAFAAEADQAHAAIADAAHAAIADgAJAAEADwAJAAIA
-FgALAAIAGgANAAIAGwAPAAEAHAAPAASAAAABAAAACRNYhwAAAAAAAHIFAAAKAAAAAAAAAAAAAAAB
-AL4AAAAAAAIAAAAAAAAAAAAAAAoADAEAAAAAAgAAAAAAAAAAAAAACgAVAQAAAAAKAAAAAAAAAAAA
-AAABAGMBAAAAAAAAAAABAAAA+QYAAAAAAAAAPE1vZHVsZT4AU0NfODE3Mzk2YTAyNTZiNGVmMDhl
-YzAxMmIzMTVmMDk4YzguY3Nwcm9qLmRsbABVc2VyQ29tcG9uZW50AENvbm5lY3Rpb25zAFZhcmlh
-YmxlcwBJbnB1dDBCdWZmZXIAU2NyaXB0TWFpbgBTZXR0aW5ncwBTQ184MTczOTZhMDI1NmI0ZWYw
-OGVjMDEyYjMxNWYwOThjOC5jc3Byb2ouUHJvcGVydGllcwBSZXNvdXJjZXMATWljcm9zb2Z0LlNx
-bFNlcnZlci5UeFNjcmlwdABNaWNyb3NvZnQuU3FsU2VydmVyLkR0cy5QaXBlbGluZQBTY3JpcHRD
-b21wb25lbnQAbXNjb3JsaWIAU3lzdGVtAE9iamVjdABTY3JpcHRCdWZmZXIAU3lzdGVtLkNvbmZp
-Z3VyYXRpb24AQXBwbGljYXRpb25TZXR0aW5nc0Jhc2UALmN0b3IATWljcm9zb2Z0LlNxbFNlcnZl
-ci5QaXBlbGluZUhvc3QAUGlwZWxpbmVCdWZmZXIAUHJvY2Vzc0lucHV0AElucHV0MF9Qcm9jZXNz
-SW5wdXQASW5wdXQwX1Byb2Nlc3NJbnB1dFJvdwBQYXJlbnRDb21wb25lbnQAZ2V0X05vdGlmaWNh
-dGlvbkNoYW5uZWwAc2V0X05vdGlmaWNhdGlvbkNoYW5uZWwAZ2V0X05vdGlmaWNhdGlvbkNoYW5u
-ZWxfSXNOdWxsAHNldF9Ob3RpZmljYXRpb25DaGFubmVsX0lzTnVsbABnZXRfRXhlcHRpb25DaGFu
-bmVsAHNldF9FeGVwdGlvbkNoYW5uZWwAZ2V0X0V4ZXB0aW9uQ2hhbm5lbF9Jc051bGwAc2V0X0V4
-ZXB0aW9uQ2hhbm5lbF9Jc051bGwATmV4dFJvdwBFbmRPZlJvd3NldABOb3RpZmljYXRpb25DaGFu
-bmVsAE5vdGlmaWNhdGlvbkNoYW5uZWxfSXNOdWxsAEV4ZXB0aW9uQ2hhbm5lbABFeGVwdGlvbkNo
-YW5uZWxfSXNOdWxsAFByZUV4ZWN1dGUAUG9zdEV4ZWN1dGUAZGVmYXVsdEluc3RhbmNlAGdldF9E
-ZWZhdWx0AERlZmF1bHQAU3lzdGVtLlJlc291cmNlcwBSZXNvdXJjZU1hbmFnZXIAcmVzb3VyY2VN
-YW4AU3lzdGVtLkdsb2JhbGl6YXRpb24AQ3VsdHVyZUluZm8AcmVzb3VyY2VDdWx0dXJlAGdldF9S
-ZXNvdXJjZU1hbmFnZXIAZ2V0X0N1bHR1cmUAc2V0X0N1bHR1cmUAQ3VsdHVyZQBJbnB1dElEAEJ1
-ZmZlcgBSb3cAQ29tcG9uZW50AEJ1ZmZlckNvbHVtbkluZGV4ZXMAdmFsdWUAU3lzdGVtLlJlZmxl
-Y3Rpb24AQXNzZW1ibHlUaXRsZUF0dHJpYnV0ZQBBc3NlbWJseURlc2NyaXB0aW9uQXR0cmlidXRl
-AEFzc2VtYmx5Q29uZmlndXJhdGlvbkF0dHJpYnV0ZQBBc3NlbWJseUNvbXBhbnlBdHRyaWJ1dGUA
-QXNzZW1ibHlQcm9kdWN0QXR0cmlidXRlAEFzc2VtYmx5Q29weXJpZ2h0QXR0cmlidXRlAEFzc2Vt
-Ymx5VHJhZGVtYXJrQXR0cmlidXRlAEFzc2VtYmx5Q3VsdHVyZUF0dHJpYnV0ZQBBc3NlbWJseVZl
-cnNpb25BdHRyaWJ1dGUAU3lzdGVtLlJ1bnRpbWUuQ29tcGlsZXJTZXJ2aWNlcwBDb21waWxhdGlv
-blJlbGF4YXRpb25zQXR0cmlidXRlAFJ1bnRpbWVDb21wYXRpYmlsaXR5QXR0cmlidXRlAFNDXzgx
-NzM5NmEwMjU2YjRlZjA4ZWMwMTJiMzE1ZjA5OGM4LmNzcHJvagBHZXRDb2x1bW5JbmRleGVzAEdl
+LnJlbG9jAAAMAAAAAGAAAAACAAAAHAAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAACw
+MwAAAAAAAEgAAAACAAUAYCMAACAQAAABAAAAAAAAAKgiAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAABp+AQAABCoucwIAAAaAAQAABCoeAigNAAAKKiYCAwQoDgAA
+CipSAnsPAAAKAnsQAAAKFpRvEQAACiomAhYDKBIAAAoqIgIWKBMAAAoqWgMsCAIWKBQAAAoqcgEA
+AHBzFQAACnpSAnsPAAAKAnsQAAAKF5RvEQAACiomAhcDKBIAAAoqIgIXKBMAAAoqWgMsCAIXKBQA
+AAoqcgEAAHBzFQAACnoeAigWAAAKKh4CKBcAAAoqHgIoGQAACioAEzADAC0AAAABAAARfgIAAAQt
+IHKeAABw0AQAAAIoGgAACm8bAAAKcxwAAAoKBoACAAAEfgIAAAQqGn4DAAAEKh4CgAMAAAQqfgIo
+HgAACgICcxcAAAZ9BAAABAICcxgAAAZ9BQAABCpyAyA+AwAAMxMCBAIDKB8AAApzBAAABm8VAAAG
+KkorBwIDbxYAAAYDbw0AAAYt8SoGKjoCKBkAAAoCA30GAAAEKjoCKBkAAAoCA30HAAAEKh4CKCEA
+AAoqHgIoIgAACioDMAIAugAAAAAAAAADbwkAAAZyHgEAcCgjAAAKLAwDcigBAHBvBgAABioDbwkA
+AAZyMgEAcCgjAAAKLDwDbwUAAAZyHgEAcCgjAAAKLRIDbwUAAAZyPAEAcCgjAAAKLAwDcjwBAHBv
+BgAABioDcigBAHBvBgAABioDbwkAAAZyPAEAcCgjAAAKLDsDbwUAAAZyHgEAcCgjAAAKLRIDbwUA
+AAZyMgEAcCgjAAAKLAwDcjIBAHBvBgAABioDcigBAHBvBgAABioeAigTAAAGKgAAAAAAALQAAADO
+yu++AQAAAJEAAABsU3lzdGVtLlJlc291cmNlcy5SZXNvdXJjZVJlYWRlciwgbXNjb3JsaWIsIFZl
+cnNpb249Mi4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5
+MzRlMDg5I1N5c3RlbS5SZXNvdXJjZXMuUnVudGltZVJlc291cmNlU2V0AgAAAAAAAAAAAAAAUEFE
+UEFEULQAAABCU0pCAQABAAAAAAAMAAAAdjIuMC41MDcyNwAAAAAFAGwAAACYBQAAI34AAAQGAABE
+BwAAI1N0cmluZ3MAAAAASA0AAEgBAAAjVVMAkA4AABAAAAAjR1VJRAAAAKAOAACAAQAAI0Jsb2IA
+AAAAAAAAAgAAAVcVogEJAQAAAPoBMwAWAAABAAAAHAAAAAgAAAAHAAAAHAAAAA4AAAAjAAAADgAA
+AAEAAAADAAAABwAAAAwAAAABAAAABAAAAAEAAAAAAAoAAQAAAAAABgDaAMUACgAwAQ8BDgBGAb4A
+CgBNAQ8BEgCoAQ8BDgD+Au0CDgAvAxoDDgAnBBUEDgA+BBUEDgBbBBUEDgB6BBUEDgCTBBUEDgCs
+BBUEDgDHBBUEDgDiBBUEDgD7BBUEDgA0BRQFDgBUBRQFDgCdBRQFDgDhBb4ADgAOBvsFDgArBr4A
+DgAwBr4ADgBUBhUEBgCABmoGBgCZBmoGCgC/Bg8BDgDmBr4AAAAAAAEAAAAAAAEAAQAAARAAOQBC
+AAUAAQABAAEAEAB4AAAACQACAAQAAAAQAIUAQgANAAIADwABABAAjwAAABEABAATAAEAEACdAAAA
+DQAGABcAAQAQAKkAAAANAAcAGAABABAAswAAABQACAAZABEAXQETABEADgNHABEAOwNLAAYAnQBp
+AAYAqQBtAAEAtwN+AAEAtwN+AFAgAAAAAJYIbQEXAAEAYyAAAAAAhhh5ARwAAQBXIAAAAACRGLgF
+kgABAGsgAAAAAIYYeQElAAEAdSAAAAAAhgi3AS0AAwCKIAAAAACGCM8BMQADAJQgAAAAAIYI5wE2
+AAQAnSAAAAAAhggGAjoABAC0IAAAAACGCCUCLQAFAMkgAAAAAIYIOQIxAAUA0yAAAAAAhghNAjYA
+BgDcIAAAAACGCGgCOgAGAPMgAAAAAIYAgwI2AAcA+yAAAAAAhgCLAjYABwADIQAAAACDGHkBHAAH
+AAwhAAAAAJMISwNPAAcARSEAAAAAkwhfA1QABwBMIQAAAACTCGsDWQAHAFQhAAAAAIYYeQEcAAgA
+dCEAAAAAxgB/A3EACACRIQAAAADGAYwDeAAKAKQhAAAAAMYBoAN4AAsApiEAAAAAhhh5AYIADAC1
+IQAAAACGGHkBggANAMQhAAAAAMYAxwMcAA4AzCEAAAAAxgDSAxwADgDUIQAAAADGAKADeAAOAJoi
+AAAAAIYYeQEcAA8AAAABAN4DAAACAOUDAAABAPkDAAABAPkDAAABAPkDAAABAPkDAAABAPkDAAAB
+AP8DAAACAN4DAAABAN4DAAABAAcEAAABAAsEAAABAAsEAAABAAcEQQB5ATEASQB5ATEAUQB5ATEA
+WQB5ATEAYQB5ATEAaQB5ATEAcQB5ATEAeQB5ATEAgQB5ATEAiQB5AYgAkQB5ARwAmQB5ARwACQB5
+ARwAEQB5ASUAEQDeA5YAEQDlA5oAKQC/BZ4AEQDJBaMAEQDSBakAEQDZBYgAoQB5ATEAEQCDAjYA
+EQCLAjYAqQB5ARwAGQB5ARwAsQBCBq4AsQBdBrUAMQB5AboAyQB5AcYAIQB5ARwAIQCuBtUA2QB5
+ARwAIQDHAxwAIQDSAxwA4QDtBtsAIQBjAI0ALgATABEBLgAbABEBLgAjABcBLgBTAFgBLgALAOEA
+LgArAOEALgA7ABEBLgBbAGEBLgAzAC8BgwDDAI0AyQDrAMwA6QDrAMwAAwEDAY0AwQACAAEAAwAC
+AAQABgAAAH8BIAAAAJcCPwAAAKsCQwAAAMYCPwAAANYCQwAAAP4CXwAAAHcDZAACAAEAAwABAAYA
+BQACAAUABQACAAcABwABAAgABwACAAkACQABAAoACQABAAwACwACAAsACwACABAADQACABEADwAB
+ABIADwAEgAAAAQAAABAT7z4AAAAAAAByBQAAAgAAAAAAAAAAAAAAAQC+AAAAAAAKAAAAAAAAAAAA
+AAAKAPIAAAAAAAIAAAAAAAAAAAAAAAEAPQEAAAAACgAAAAAAAAAAAAAACgCHAQAAAAAAAAAAAQAA
+APkGAAAAAAAAADxNb2R1bGU+AFNDXzgxNzM5NmEwMjU2YjRlZjA4ZWMwMTJiMzE1ZjA5OGM4LmNz
+cHJvai5kbGwAU2V0dGluZ3MAU0NfODE3Mzk2YTAyNTZiNGVmMDhlYzAxMmIzMTVmMDk4YzguY3Nw
+cm9qLlByb3BlcnRpZXMASW5wdXQwQnVmZmVyAFJlc291cmNlcwBVc2VyQ29tcG9uZW50AENvbm5l
+Y3Rpb25zAFZhcmlhYmxlcwBTY3JpcHRNYWluAFN5c3RlbQBTeXN0ZW0uQ29uZmlndXJhdGlvbgBB
+cHBsaWNhdGlvblNldHRpbmdzQmFzZQBNaWNyb3NvZnQuU3FsU2VydmVyLlR4U2NyaXB0AE1pY3Jv
+c29mdC5TcWxTZXJ2ZXIuRHRzLlBpcGVsaW5lAFNjcmlwdEJ1ZmZlcgBtc2NvcmxpYgBPYmplY3QA
+U2NyaXB0Q29tcG9uZW50AGRlZmF1bHRJbnN0YW5jZQBnZXRfRGVmYXVsdAAuY3RvcgBEZWZhdWx0
+AE1pY3Jvc29mdC5TcWxTZXJ2ZXIuUGlwZWxpbmVIb3N0AFBpcGVsaW5lQnVmZmVyAGdldF9Ob3Rp
+ZmljYXRpb25DaGFubmVsAHNldF9Ob3RpZmljYXRpb25DaGFubmVsAGdldF9Ob3RpZmljYXRpb25D
+aGFubmVsX0lzTnVsbABzZXRfTm90aWZpY2F0aW9uQ2hhbm5lbF9Jc051bGwAZ2V0X0V4ZXB0aW9u
+Q2hhbm5lbABzZXRfRXhlcHRpb25DaGFubmVsAGdldF9FeGVwdGlvbkNoYW5uZWxfSXNOdWxsAHNl
+dF9FeGVwdGlvbkNoYW5uZWxfSXNOdWxsAE5leHRSb3cARW5kT2ZSb3dzZXQATm90aWZpY2F0aW9u
+Q2hhbm5lbABOb3RpZmljYXRpb25DaGFubmVsX0lzTnVsbABFeGVwdGlvbkNoYW5uZWwARXhlcHRp
+b25DaGFubmVsX0lzTnVsbABTeXN0ZW0uUmVzb3VyY2VzAFJlc291cmNlTWFuYWdlcgByZXNvdXJj
+ZU1hbgBTeXN0ZW0uR2xvYmFsaXphdGlvbgBDdWx0dXJlSW5mbwByZXNvdXJjZUN1bHR1cmUAZ2V0
+X1Jlc291cmNlTWFuYWdlcgBnZXRfQ3VsdHVyZQBzZXRfQ3VsdHVyZQBDdWx0dXJlAFByb2Nlc3NJ
+bnB1dABJbnB1dDBfUHJvY2Vzc0lucHV0AElucHV0MF9Qcm9jZXNzSW5wdXRSb3cAUGFyZW50Q29t
+cG9uZW50AFByZUV4ZWN1dGUAUG9zdEV4ZWN1dGUAQnVmZmVyAEJ1ZmZlckNvbHVtbkluZGV4ZXMA
+dmFsdWUASW5wdXRJRABSb3cAQ29tcG9uZW50AFN5c3RlbS5SZWZsZWN0aW9uAEFzc2VtYmx5VGl0
+bGVBdHRyaWJ1dGUAQXNzZW1ibHlEZXNjcmlwdGlvbkF0dHJpYnV0ZQBBc3NlbWJseUNvbmZpZ3Vy
+YXRpb25BdHRyaWJ1dGUAQXNzZW1ibHlDb21wYW55QXR0cmlidXRlAEFzc2VtYmx5UHJvZHVjdEF0
+dHJpYnV0ZQBBc3NlbWJseUNvcHlyaWdodEF0dHJpYnV0ZQBBc3NlbWJseVRyYWRlbWFya0F0dHJp
+YnV0ZQBBc3NlbWJseUN1bHR1cmVBdHRyaWJ1dGUAQXNzZW1ibHlWZXJzaW9uQXR0cmlidXRlAFN5
+c3RlbS5SdW50aW1lLkNvbXBpbGVyU2VydmljZXMAQ29tcGlsYXRpb25SZWxheGF0aW9uc0F0dHJp
+YnV0ZQBSdW50aW1lQ29tcGF0aWJpbGl0eUF0dHJpYnV0ZQBTQ184MTczOTZhMDI1NmI0ZWYwOGVj
+MDEyYjMxNWYwOThjOC5jc3Byb2oAQ29tcGlsZXJHZW5lcmF0ZWRBdHRyaWJ1dGUALmNjdG9yAEdl
 dFN0cmluZwBzZXRfSXRlbQBJc051bGwAU2V0TnVsbABJbnZhbGlkT3BlcmF0aW9uRXhjZXB0aW9u
-AFNTSVNTY3JpcHRDb21wb25lbnRFbnRyeVBvaW50QXR0cmlidXRlAFN0cmluZwBvcF9FcXVhbGl0
-eQBDb21waWxlckdlbmVyYXRlZEF0dHJpYnV0ZQAuY2N0b3IAU3lzdGVtLkRpYWdub3N0aWNzAERl
-YnVnZ2VyTm9uVXNlckNvZGVBdHRyaWJ1dGUAVHlwZQBSdW50aW1lVHlwZUhhbmRsZQBHZXRUeXBl
-RnJvbUhhbmRsZQBBc3NlbWJseQBnZXRfQXNzZW1ibHkAU3lzdGVtLkNvbXBvbmVudE1vZGVsAEVk
-aXRvckJyb3dzYWJsZUF0dHJpYnV0ZQBFZGl0b3JCcm93c2FibGVTdGF0ZQBTQ184MTczOTZhMDI1
-NmI0ZWYwOGVjMDEyYjMxNWYwOThjOC5jc3Byb2ouUHJvcGVydGllcy5SZXNvdXJjZXMucmVzb3Vy
-Y2VzAAAAgJtJAHMATgB1AGwAbAAgAHAAcgBvAHAAZQByAHQAeQAgAGMAYQBuAG4AbwB0ACAAYgBl
-ACAAcwBlAHQAIAB0AG8AIABGAGEAbABzAGUALgAgAEEAcwBzAGkAZwBuACAAYQAgAHYAYQBsAHUA
-ZQAgAHQAbwAgAHQAaABlACAAYwBvAGwAdQBtAG4AIABpAG4AcwB0AGUAYQBkAC4AAAlCAG8AdABo
-AAAJTgBvAG4AZQAACVQAZQB4AHQAAAtFAG0AYQBpAGwAAH9TAEMAXwA4ADEANwAzADkANgBhADAA
-MgA1ADYAYgA0AGUAZgAwADgAZQBjADAAMQAyAGIAMwAxADUAZgAwADkAOABjADgALgBjAHMAcABy
-AG8AagAuAFAAcgBvAHAAZQByAHQAaQBlAHMALgBSAGUAcwBvAHUAcgBjAGUAcwAAnuMtaTAbk06j
-t5wGliTSQgAIiYRdzYCAzJEIt3pcVhk04IkDBhIMAwYSEAMgAAEGIAIBCBIVBSABARIUAwYSBQUg
-AQESBQcgAgESFR0IAyAADgQgAQEOAyAAAgQgAQECAygADgMoAAIDBhIcBAAAEhwECAASHAMGEhkD
-BhIdBAAAEhkEAAASHQUAAQESHQQIABIZBAgAEh0EIAEBCAUgAR0ICAMGEhUDBh0IBCABDggFIAIB
-CBwEIAECCAQBAAAABQACAg4OAwAAAQYAARJhEWUEIAASaQYgAgEOEmkEBwESGQUgAQERcQgBAAIA
-AAAAAC8BACpTQ184MTczOTZhMDI1NmI0ZWYwOGVjMDEyYjMxNWYwOThjOC5jc3Byb2oAAAUBAAAA
-ABcBABJFdmxpdHUgRGVzaWduIEluYy4AACgBACNDb3B5cmlnaHQgQCBFdmxpdHUgRGVzaWduIElu
-Yy4gMjAxMwAACAEACAAAAAAAHgEAAQBUAhZXcmFwTm9uRXhjZXB0aW9uVGhyb3dzAYAzAAAAAAAA
-AAAAAJ4zAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAACQMwAAAAAAAAAAAAAAAAAAAABfQ29yRGxs
-TWFpbgBtc2NvcmVlLmRsbAAAAAAA/yUAIEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AFN5c3RlbS5EaWFnbm9zdGljcwBEZWJ1Z2dlck5vblVzZXJDb2RlQXR0cmlidXRlAFR5cGUAUnVu
+dGltZVR5cGVIYW5kbGUAR2V0VHlwZUZyb21IYW5kbGUAQXNzZW1ibHkAZ2V0X0Fzc2VtYmx5AFN5
+c3RlbS5Db21wb25lbnRNb2RlbABFZGl0b3JCcm93c2FibGVBdHRyaWJ1dGUARWRpdG9yQnJvd3Nh
+YmxlU3RhdGUAR2V0Q29sdW1uSW5kZXhlcwBTU0lTU2NyaXB0Q29tcG9uZW50RW50cnlQb2ludEF0
+dHJpYnV0ZQBTdHJpbmcAb3BfRXF1YWxpdHkAU0NfODE3Mzk2YTAyNTZiNGVmMDhlYzAxMmIzMTVm
+MDk4YzguY3Nwcm9qLlByb3BlcnRpZXMuUmVzb3VyY2VzLnJlc291cmNlcwAAAICbSQBzAE4AdQBs
+AGwAIABwAHIAbwBwAGUAcgB0AHkAIABjAGEAbgBuAG8AdAAgAGIAZQAgAHMAZQB0ACAAdABvACAA
+RgBhAGwAcwBlAC4AIABBAHMAcwBpAGcAbgAgAGEAIAB2AGEAbAB1AGUAIAB0AG8AIAB0AGgAZQAg
+AGMAbwBsAHUAbQBuACAAaQBuAHMAdABlAGEAZAAuAAB/UwBDAF8AOAAxADcAMwA5ADYAYQAwADIA
+NQA2AGIANABlAGYAMAA4AGUAYwAwADEAMgBiADMAMQA1AGYAMAA5ADgAYwA4AC4AYwBzAHAAcgBv
+AGoALgBQAHIAbwBwAGUAcgB0AGkAZQBzAC4AUgBlAHMAbwB1AHIAYwBlAHMAAAlCAG8AdABoAAAJ
+TgBvAG4AZQAACVQAZQB4AHQAAAtFAG0AYQBpAGwAAHJQej4tfq5MnqC64eQ2GCYACLd6XFYZNOCJ
+CImEXc2AgMyRAwYSCAQAABIIAyAAAQQIABIIByACARIVHQgDIAAOBCABAQ4DIAACBCABAQIDKAAO
+AygAAgMGEhkDBhIdBAAAEhkEAAASHQUAAQESHQQIABIZBAgAEh0DBhIYAwYSHAYgAgEIEhUFIAEB
+EgwDBhIRBSABARIRBCABAQgEAQAAAAMAAAEDBhIVAwYdCAQgAQ4IBSACAQgcBCABAggGAAESWRFd
+BCAAEmEGIAIBDhJhBAcBEhkFIAEBEWkIAQACAAAAAAAFIAEdCAgFAAICDg4vAQAqU0NfODE3Mzk2
+YTAyNTZiNGVmMDhlYzAxMmIzMTVmMDk4YzguY3Nwcm9qAAAFAQAAAAAXAQASRXZsaXR1IERlc2ln
+biBJbmMuAAAoAQAjQ29weXJpZ2h0IEAgRXZsaXR1IERlc2lnbiBJbmMuIDIwMTMAAAgBAAgAAAAA
+AB4BAAEAVAIWV3JhcE5vbkV4Y2VwdGlvblRocm93cwGoMwAAAAAAAAAAAAC+MwAAACAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAsDMAAAAAAAAAAF9Db3JEbGxNYWluAG1zY29yZWUuZGxsAAAAAAD/JQAg
+QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAQAQAAAAGAAAgAAAAAAAAAAAAAAAAAAAAQABAAAAMAAAgAAAAAAAAAAAAAAAAAAAAQAAAAAA
 SAAAAFhAAABcBAAAAAAAAAAAAABcBDQAAABWAFMAXwBWAEUAUgBTAEkATwBOAF8ASQBOAEYATwAA
-AAAAvQTv/gAAAQAAAAEAWIcJEwAAAQBYhwkTPwAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAEQA
+AAAAvQTv/gAAAQAAAAEA7z4QEwAAAQDvPhATPwAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAEQA
 AAABAFYAYQByAEYAaQBsAGUASQBuAGYAbwAAAAAAJAAEAAAAVAByAGEAbgBzAGwAYQB0AGkAbwBu
 AAAAAAAAALAEvAMAAAEAUwB0AHIAaQBuAGcARgBpAGwAZQBJAG4AZgBvAAAAmAMAAAEAMAAwADAA
 MAAwADQAYgAwAAAASAATAAEAQwBvAG0AcABhAG4AeQBOAGEAbQBlAAAAAABFAHYAbABpAHQAdQAg
 AEQAZQBzAGkAZwBuACAASQBuAGMALgAAAAAAgAArAAEARgBpAGwAZQBEAGUAcwBjAHIAaQBwAHQA
 aQBvAG4AAAAAAFMAQwBfADgAMQA3ADMAOQA2AGEAMAAyADUANgBiADQAZQBmADAAOABlAGMAMAAx
 ADIAYgAzADEANQBmADAAOQA4AGMAOAAuAGMAcwBwAHIAbwBqAAAAAABAAA8AAQBGAGkAbABlAFYA
-ZQByAHMAaQBvAG4AAAAAADEALgAwAC4ANAA4ADcAMwAuADMANAA2ADQAOAAAAAAAgAAvAAEASQBu
+ZQByAHMAaQBvAG4AAAAAADEALgAwAC4ANAA4ADgAMAAuADEANgAxADEAMQAAAAAAgAAvAAEASQBu
 AHQAZQByAG4AYQBsAE4AYQBtAGUAAABTAEMAXwA4ADEANwAzADkANgBhADAAMgA1ADYAYgA0AGUA
 ZgAwADgAZQBjADAAMQAyAGIAMwAxADUAZgAwADkAOABjADgALgBjAHMAcAByAG8AagAuAGQAbABs
 AAAAAABsACQAAQBMAGUAZwBhAGwAQwBvAHAAeQByAGkAZwBoAHQAAABDAG8AcAB5AHIAaQBnAGgA
@@ -1814,14 +1814,14 @@ YQAwADIANQA2AGIANABlAGYAMAA4AGUAYwAwADEAMgBiADMAMQA1AGYAMAA5ADgAYwA4AC4AYwBz
 AHAAcgBvAGoALgBkAGwAbAAAAAAAeAArAAEAUAByAG8AZAB1AGMAdABOAGEAbQBlAAAAAABTAEMA
 XwA4ADEANwAzADkANgBhADAAMgA1ADYAYgA0AGUAZgAwADgAZQBjADAAMQAyAGIAMwAxADUAZgAw
 ADkAOABjADgALgBjAHMAcAByAG8AagAAAAAARAAPAAEAUAByAG8AZAB1AGMAdABWAGUAcgBzAGkA
-bwBuAAAAMQAuADAALgA0ADgANwAzAC4AMwA0ADYANAA4AAAAAABIAA8AAQBBAHMAcwBlAG0AYgBs
-AHkAIABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgA0ADgANwAzAC4AMwA0ADYANAA4AAAAAAAAAAAA
+bwBuAAAAMQAuADAALgA0ADgAOAAwAC4AMQA2ADEAMQAxAAAAAABIAA8AAQBBAHMAcwBlAG0AYgBs
+AHkAIABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgA0ADgAOAAwAC4AMQA2ADEAMQAxAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAMAAAAsDMAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAMAAAA0DMAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -1938,7 +1938,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arra
 <input id="996" name="Multicast Input 1" description="" hasSideEffects="false" dangling="false" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed"><externalMetadataColumns isUsed="False"/></input>
 </inputs>
 <outputs>
-<output id="997" name="Multicast Output 1" description="" exclusionGroup="0" synchronousInputId="996" deleteOutputOnPathDetached="true" hasSideEffects="false" dangling="false" isErrorOut="false" isSorted="false" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed"><externalMetadataColumns isUsed="False"/></output>
 <output id="1000" name="Multicast Output 2" description="" exclusionGroup="0" synchronousInputId="996" deleteOutputOnPathDetached="true" hasSideEffects="false" dangling="false" isErrorOut="false" isSorted="false" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed"><externalMetadataColumns isUsed="False"/></output>
 <output id="1008" name="Multicast Output 3" description="" exclusionGroup="0" synchronousInputId="996" deleteOutputOnPathDetached="true" hasSideEffects="false" dangling="true" isErrorOut="false" isSorted="false" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed"><externalMetadataColumns isUsed="False"/></output>
 </outputs>
@@ -1954,11 +1953,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arra
 <outputs>
 <output id="1003" name="Derived Column Output" description="Default Output of the Derived Column Transformation" exclusionGroup="1" synchronousInputId="1002" deleteOutputOnPathDetached="false" hasSideEffects="false" dangling="false" isErrorOut="false" isSorted="false" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed"><outputColumns>
 <outputColumn id="1022" name="MissingTelephone" description="" lineageId="1022" precision="0" scale="0" length="3" dataType="wstr" codePage="0" sortKeyPosition="0" comparisonFlags="0" specialFlags="0" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" truncationRowDisposition="FailComponent" externalMetadataColumnId="0" mappedColumnId="0"><properties>
-<property id="1023" name="Expression" dataType="System.String" state="default" isArray="false" description="Derived Column Expression" typeConverter="" UITypeEditor="" containsID="true" expressionType="None">#623 == "Text" || #623 == "Both" ? [ISNULL](#617) || [LEN](#617) == 0 ? "Yes" : "No" : NULL(DT_WSTR,3)</property>
-<property id="1024" name="FriendlyExpression" dataType="System.String" state="default" isArray="false" description="Derived Column Friendly Expression" typeConverter="" UITypeEditor="" containsID="true" expressionType="Notify">NotificationChannel == "Text" || NotificationChannel == "Both" ? ISNULL(TelephoneNumber) || LEN(TelephoneNumber) == 0 ? "Yes" : "No" : NULL(DT_WSTR,3)</property></properties></outputColumn>
+<property id="1023" name="Expression" dataType="System.String" state="default" isArray="false" description="Derived Column Expression" typeConverter="" UITypeEditor="" containsID="true" expressionType="None">#623 == "Text" || #623 == "Both" ? [ISNULL](#617) || [LEN]([TRIM](#617)) == 0 ? "Yes" : "No" : NULL(DT_WSTR,3)</property>
+<property id="1024" name="FriendlyExpression" dataType="System.String" state="default" isArray="false" description="Derived Column Friendly Expression" typeConverter="" UITypeEditor="" containsID="true" expressionType="Notify">NotificationChannel == "Text" || NotificationChannel == "Both" ? ISNULL(TelephoneNumber) || LEN(TRIM(TelephoneNumber)) == 0 ? "Yes" : "No" : NULL(DT_WSTR,3)</property></properties></outputColumn>
 <outputColumn id="1025" name="MissingEmailAddress" description="" lineageId="1025" precision="0" scale="0" length="3" dataType="wstr" codePage="0" sortKeyPosition="0" comparisonFlags="0" specialFlags="0" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" truncationRowDisposition="FailComponent" externalMetadataColumnId="0" mappedColumnId="0"><properties>
-<property id="1026" name="Expression" dataType="System.String" state="default" isArray="false" description="Derived Column Expression" typeConverter="" UITypeEditor="" containsID="true" expressionType="None">#623 == "Email" || #623 == "Both" ? [ISNULL](#620) || [LEN](#620) == 0 ? "Yes" : "No" : NULL(DT_WSTR,3)</property>
-<property id="1027" name="FriendlyExpression" dataType="System.String" state="default" isArray="false" description="Derived Column Friendly Expression" typeConverter="" UITypeEditor="" containsID="true" expressionType="Notify">NotificationChannel == "Email" || NotificationChannel == "Both" ? ISNULL(Email) || LEN(Email) == 0 ? "Yes" : "No" : NULL(DT_WSTR,3)</property></properties></outputColumn>
+<property id="1026" name="Expression" dataType="System.String" state="default" isArray="false" description="Derived Column Expression" typeConverter="" UITypeEditor="" containsID="true" expressionType="None">#623 == "Email" || #623 == "Both" ? [ISNULL](#620) || [LEN]([TRIM](#620)) == 0 ? "Yes" : "No" : NULL(DT_WSTR,3)</property>
+<property id="1027" name="FriendlyExpression" dataType="System.String" state="default" isArray="false" description="Derived Column Friendly Expression" typeConverter="" UITypeEditor="" containsID="true" expressionType="Notify">NotificationChannel == "Email" || NotificationChannel == "Both" ? ISNULL(Email) || LEN(TRIM(Email)) == 0 ? "Yes" : "No" : NULL(DT_WSTR,3)</property></properties></outputColumn>
 <outputColumn id="1131" name="Date" description="" lineageId="1131" precision="0" scale="0" length="0" dataType="date" codePage="0" sortKeyPosition="0" comparisonFlags="0" specialFlags="0" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" truncationRowDisposition="FailComponent" externalMetadataColumnId="0" mappedColumnId="0"><properties>
 <property id="1132" name="Expression" dataType="System.String" state="default" isArray="false" description="Derived Column Expression" typeConverter="" UITypeEditor="" containsID="true" expressionType="None">@[System::CreationDate]</property>
 <property id="1133" name="FriendlyExpression" dataType="System.String" state="default" isArray="false" description="Derived Column Friendly Expression" typeConverter="" UITypeEditor="" containsID="true" expressionType="Notify">@[System::CreationDate]</property></properties></outputColumn></outputColumns><externalMetadataColumns isUsed="False"/></output>
@@ -1988,6 +1987,25 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arra
 <externalMetadataColumn id="1166" name="Date" description="" precision="0" scale="0" length="50" dataType="str" codePage="1252" mappedColumnId="0"/></externalMetadataColumns></input>
 </inputs>
 </component>
+<component id="1183" name="Missing Information For Intended Channel" componentClassID="{3AE878C6-0D6C-4F48-8128-40E00E9C1B7D}" description="Evaluates and directs rows in a dataset." localeId="-1" usesDispositions="true" validateExternalMetadata="True" version="0" pipelineVersion="0" contactInfo="Conditional Split;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0">
+<inputs>
+<input id="1184" name="Conditional Split Input" description="Input to the Conditional Split Transformation" hasSideEffects="false" dangling="false" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed"><inputColumns>
+<inputColumn id="1205" name="" description="" lineageId="1022" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="1206" name="" description="" lineageId="1025" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+</inputColumns><externalMetadataColumns isUsed="False"/></input>
+</inputs>
+<outputs>
+<output id="1208" name="Customers Missing Intended Channel Information" description="Output 1 of the Conditional Split Transformation" exclusionGroup="1" synchronousInputId="1184" deleteOutputOnPathDetached="false" hasSideEffects="false" dangling="false" isErrorOut="false" isSorted="false" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" truncationRowDisposition="FailComponent"><properties>
+<property id="1209" name="Expression" dataType="System.String" state="default" isArray="false" description="Specifies the expression. This expression version uses lineage identifiers instead of column names." typeConverter="" UITypeEditor="" containsID="true" expressionType="None">(![ISNULL](#1022) &amp;&amp; #1022 == "Yes") || (![ISNULL](#1025) &amp;&amp; #1025 == "Yes")</property>
+<property id="1210" name="FriendlyExpression" dataType="System.String" state="default" isArray="false" description="Specifies the friendly version of the expression. This expression version uses column names." typeConverter="" UITypeEditor="" containsID="true" expressionType="Notify">(!ISNULL(MissingTelephone) &amp;&amp; MissingTelephone == "Yes") || (!ISNULL(MissingEmailAddress) &amp;&amp; MissingEmailAddress == "Yes")</property>
+<property id="1211" name="EvaluationOrder" dataType="System.Int32" state="default" isArray="false" description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value." typeConverter="" UITypeEditor="" containsID="false" expressionType="None">0</property></properties><externalMetadataColumns isUsed="False"/></output>
+<output id="1185" name="Conditional Split Default Output" description="Default Output of the Conditional Split Transformation" exclusionGroup="1" synchronousInputId="1184" deleteOutputOnPathDetached="false" hasSideEffects="false" dangling="false" isErrorOut="false" isSorted="false" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed"><properties>
+<property id="1186" name="IsDefaultOut" dataType="System.Boolean" state="default" isArray="false" description="" typeConverter="" UITypeEditor="" containsID="false" expressionType="None">true</property></properties><externalMetadataColumns isUsed="False"/></output>
+<output id="1187" name="Conditional Split Error Output" description="Error Output of the Conditional Split Transformation" exclusionGroup="1" synchronousInputId="1184" deleteOutputOnPathDetached="false" hasSideEffects="false" dangling="false" isErrorOut="true" isSorted="false" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed"><outputColumns>
+<outputColumn id="1188" name="ErrorCode" description="" lineageId="1188" precision="0" scale="0" length="0" dataType="i4" codePage="0" sortKeyPosition="0" comparisonFlags="0" specialFlags="1" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<outputColumn id="1189" name="ErrorColumn" description="" lineageId="1189" precision="0" scale="0" length="0" dataType="i4" codePage="0" sortKeyPosition="0" comparisonFlags="0" specialFlags="2" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/></outputColumns><externalMetadataColumns isUsed="False"/></output>
+</outputs>
+</component>
 </components>
 <paths>
 <path id="335" name="Flat File Source Output" description="" startId="236" endId="331"/>
@@ -2001,9 +2019,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arra
 <path id="973" name="Data Conversion Output" description="" startId="923" endId="969"/>
 <path id="974" name="Sort Output" description="" startId="970" endId="605"/>
 <path id="998" name="Merge Join Output" description="" startId="607" endId="996"/>
-<path id="999" name="Multicast Output 1" description="" startId="997" endId="407"/>
 <path id="1007" name="Multicast Output 2" description="" startId="1000" endId="1002"/>
-<path id="1072" name="Derived Column Output" description="" startId="1003" endId="1068"/>
+<path id="1190" name="Derived Column Output" description="" startId="1003" endId="1184"/>
+<path id="1216" name="Customers Missing Intended Channel Information" description="" startId="1208" endId="1068"/>
+<path id="1276" name="Conditional Split Default Output" description="" startId="1185" endId="407"/>
 </paths></pipeline></DTS:ObjectData></DTS:Executable>
 <DTS:Property DTS:Name="ObjectName">Notification Files Update Loop Container</DTS:Property>
 <DTS:Property DTS:Name="DTSID">{7B884031-C0A6-4C85-9502-1880ED2DC964}</DTS:Property>
@@ -2082,7 +2101,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arra
 <DTS:Property DTS:Name="PackageVariableValue" DTS:DataType="8">&lt;PrecedenceConstraint xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:EvalOp&gt;Constraint&lt;/dwd:EvalOp&gt;&lt;/PrecedenceConstraint&gt;</DTS:Property>
 <DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
 <DTS:Property DTS:Name="ObjectName">{334314E6-DF9D-4331-9E50-3247C67BDD78}</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{DEB1B158-CBF8-4110-A523-665AADAFE116}</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{58F92C60-8BBE-4277-BDB2-77BD89EECF4D}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable>
 <DTS:PackageVariable>
@@ -2204,21 +2223,21 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arra
 &lt;/dds&gt;&lt;/dwd:Layout&gt;&lt;dwd:PersistedViewPortTop&gt;-3009&lt;/dwd:PersistedViewPortTop&gt;&lt;/dwd:DtsControlFlowDiagram&gt;&lt;/Package&gt;</DTS:Property>
 <DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
 <DTS:Property DTS:Name="ObjectName">{5E60EB65-A4EC-4F65-9A26-D99FCC70AFED}</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{67B0D764-1488-46BD-90AE-B29F36D8A58F}</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{3D4B63F4-075B-4FBC-80A5-32B85FF63125}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable>
 <DTS:PackageVariable>
 <DTS:Property DTS:Name="PackageVariableValue" DTS:DataType="8">&lt;PrecedenceConstraint xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:EvalOp&gt;Constraint&lt;/dwd:EvalOp&gt;&lt;/PrecedenceConstraint&gt;</DTS:Property>
 <DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
 <DTS:Property DTS:Name="ObjectName">{9D1B5C9F-EC60-4CF3-9571-69FBDDE07336}</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{B6882EEC-A2EE-4B18-91D0-D4AB5ACE18B0}</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{5C73458E-A26B-4CC7-94AA-BE224BF2AEB6}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable>
 <DTS:PackageVariable>
 <DTS:Property DTS:Name="PackageVariableValue" DTS:DataType="8">&lt;TaskHost xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:DtsDataFlowDiagram&gt;&lt;dwd:Layout&gt;&lt;dds&gt;
-  &lt;diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="Microsoft.DataWarehouse.Layout.GraphLayout100" defaultlineroute="Microsoft.DataWarehouse.Layout.GraphLayout100" version="7" nextobject="10" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="0" scrolltop="0" gridx="150" gridy="150" marginx="1000" marginy="1000" zoom="100" x="39132" y="15293" backcolor="15334399" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="1" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="0" backpictureclsid="{00000000-0000-0000-0000-000000000000}"&gt;
+  &lt;diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="Microsoft.DataWarehouse.Layout.GraphLayout100" defaultlineroute="Microsoft.DataWarehouse.Layout.GraphLayout100" version="7" nextobject="28" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="0" scrolltop="0" gridx="150" gridy="150" marginx="1000" marginy="1000" zoom="100" x="39767" y="15505" backcolor="15334399" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="1" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="0" backpictureclsid="{00000000-0000-0000-0000-000000000000}"&gt;
     &lt;font&gt;
-      &lt;ddsxmlobjectstreamwrapper binary="01010000900180380100065461686f6d61" /&gt;
+      &lt;ddsxmlobjectstreamwrapper binary="01000000900144420100065461686f6d61" /&gt;
     &lt;/font&gt;
     &lt;mouseicon&gt;
       &lt;ddsxmlobjectstreamwrapper binary="6c74000000000000" /&gt;
@@ -2272,19 +2291,19 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arra
 &lt;/dds&gt;&lt;/dwd:Layout&gt;&lt;/dwd:DtsDataFlowDiagram&gt;&lt;dwd:DtsComponentDesignerPropertiesList&gt;&lt;dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:key xsi:type="xsd:string"&gt;1	DataSourceViewID&lt;/dwd:key&gt;&lt;/dwd:DtsComponentDesignTimeProperty&gt;&lt;/dwd:DtsComponentDesignerPropertiesList&gt;&lt;/TaskHost&gt;</DTS:Property>
 <DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
 <DTS:Property DTS:Name="ObjectName">{B5848F85-5F60-49FC-85AD-1C094F6DF355}</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{E1F5F8F4-2F65-4DA5-A814-D1E0102B8415}</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{D76DBCA1-8DE1-449F-95E7-8483E5E4C22C}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable>
 <DTS:PackageVariable>
 <DTS:Property DTS:Name="PackageVariableValue" DTS:DataType="8">&lt;PipelinePath xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:SourceName&gt;ADO NET Source Output&lt;/dwd:SourceName&gt;&lt;dwd:DestinationName&gt;Recordset Destination Input&lt;/dwd:DestinationName&gt;&lt;/PipelinePath&gt;</DTS:Property>
 <DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
 <DTS:Property DTS:Name="ObjectName">{B5848F85-5F60-49FC-85AD-1C094F6DF355}-40</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{F3DECA65-B2CA-4956-9CDD-27BD81F7DECB}</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{8E9281E4-0552-46C7-A173-7B8BDD5E5E3A}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable>
 <DTS:PackageVariable>
-<DTS:Property DTS:Name="PackageVariableValue" DTS:DataType="8">&lt;TaskHost xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:DtsDataFlowDiagram&gt;&lt;dwd:BoundingLeft&gt;-500&lt;/dwd:BoundingLeft&gt;&lt;dwd:Layout&gt;&lt;dds&gt;
-  &lt;diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="Microsoft.DataWarehouse.Layout.GraphLayout100" defaultlineroute="Microsoft.DataWarehouse.Layout.GraphLayout100" version="7" nextobject="69" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-1500" scrolltop="1792" gridx="150" gridy="150" marginx="1000" marginy="1000" zoom="100" x="39132" y="15293" backcolor="15334399" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="1" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="0" backpictureclsid="{00000000-0000-0000-0000-000000000000}"&gt;
+<DTS:Property DTS:Name="PackageVariableValue" DTS:DataType="8">&lt;TaskHost xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:DtsDataFlowDiagram&gt;&lt;dwd:BoundingLeft&gt;-500&lt;/dwd:BoundingLeft&gt;&lt;dwd:BoundingTop&gt;-450&lt;/dwd:BoundingTop&gt;&lt;dwd:Layout&gt;&lt;dds&gt;
+  &lt;diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="Microsoft.DataWarehouse.Layout.GraphLayout100" defaultlineroute="Microsoft.DataWarehouse.Layout.GraphLayout100" version="7" nextobject="259" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-1500" scrolltop="-1450" gridx="150" gridy="150" marginx="1000" marginy="1000" zoom="100" x="39132" y="15293" backcolor="15334399" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="1" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="1" viewpagebreaks="0" donotforceconnectorsbehindshapes="0" backpictureclsid="{00000000-0000-0000-0000-000000000000}"&gt;
     &lt;font&gt;
       &lt;ddsxmlobjectstreamwrapper binary="01000000900144420100065461686f6d61" /&gt;
     &lt;/font&gt;
@@ -2295,7 +2314,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arra
   &lt;layoutmanager&gt;
     &lt;ddsxmlobj /&gt;
   &lt;/layoutmanager&gt;
-  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Extracts data from a relational database by using a .NET provider." left="2223" top="3016" logicalid="12" controlid="1" masterid="0" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
+  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Extracts data from a relational database by using a .NET provider." left="1213" top="-423" logicalid="31" controlid="1" masterid="0" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
     &lt;control&gt;
       &lt;ddsxmlobjectstreaminitwrapper binary="000800000e0e00008c040000" /&gt;
     &lt;/control&gt;
@@ -2307,7 +2326,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arra
     &lt;/layoutobject&gt;
     &lt;shape groupshapeid="0" groupnode="0" /&gt;
   &lt;/ddscontrol&gt;
-  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Flat File Source" left="6748" top="2963" logicalid="13" controlid="2" masterid="0" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
+  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Flat File Source" left="11717" top="-450" logicalid="32" controlid="2" masterid="0" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
     &lt;control&gt;
       &lt;ddsxmlobjectstreaminitwrapper binary="000800000e0e00008c040000" /&gt;
     &lt;/control&gt;
@@ -2319,7 +2338,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arra
     &lt;/layoutobject&gt;
     &lt;shape groupshapeid="0" groupnode="0" /&gt;
   &lt;/ddscontrol&gt;
-  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Sorts data." left="6747" top="5344" logicalid="16" controlid="5" masterid="0" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
+  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Sorts data." left="11716" top="1931" logicalid="33" controlid="3" masterid="0" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
     &lt;control&gt;
       &lt;ddsxmlobjectstreaminitwrapper binary="000800000e0e00008c040000" /&gt;
     &lt;/control&gt;
@@ -2331,7 +2350,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arra
     &lt;/layoutobject&gt;
     &lt;shape groupshapeid="0" groupnode="0" /&gt;
   &lt;/ddscontrol&gt;
-  &lt;ddscontrol controlprogid="MSDDS.Polyline" left="8147" top="3728" logicalid="17" controlid="6" masterid="0" hint1="0" hint2="0" width="800" height="2116" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
+  &lt;ddscontrol controlprogid="MSDDS.Polyline" left="13116" top="315" logicalid="34" controlid="4" masterid="0" hint1="0" hint2="0" width="800" height="2116" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
     &lt;control&gt;
       &lt;ddsxmlobj&gt;
         &lt;polyline endtypedst="3" endtypesrc="1" usercolor="32768" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" /&gt;
@@ -2344,14 +2363,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arra
         &lt;property name="VisibleAP" value="0" vartype="3" /&gt;
       &lt;/ddsxmlobj&gt;
     &lt;/layoutobject&gt;
-    &lt;connector lineroutestyle="Microsoft.DataWarehouse.Layout.GraphLayout100" sourceid="2" destid="5" sourceattachpoint="7" destattachpoint="6" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="2" relatedid="0" virtual="0"&gt;
-      &lt;point x="8547" y="4127" /&gt;
-      &lt;point x="8547" y="4735" /&gt;
-      &lt;point x="8546" y="4735" /&gt;
-      &lt;point x="8546" y="5344" /&gt;
+    &lt;connector lineroutestyle="Microsoft.DataWarehouse.Layout.GraphLayout100" sourceid="2" destid="3" sourceattachpoint="7" destattachpoint="6" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="2" relatedid="0" virtual="0"&gt;
+      &lt;point x="13516" y="714" /&gt;
+      &lt;point x="13516" y="1322" /&gt;
+      &lt;point x="13515" y="1322" /&gt;
+      &lt;point x="13515" y="1931" /&gt;
     &lt;/connector&gt;
   &lt;/ddscontrol&gt;
-  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Flat File Destination" left="6007" top="14842" logicalid="18" controlid="7" masterid="0" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
+  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Flat File Destination" left="18385" top="13916" logicalid="35" controlid="5" masterid="0" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
     &lt;control&gt;
       &lt;ddsxmlobjectstreaminitwrapper binary="000800000e0e00008c040000" /&gt;
     &lt;/control&gt;
@@ -2363,7 +2382,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arra
     &lt;/layoutobject&gt;
     &lt;shape groupshapeid="0" groupnode="0" /&gt;
   &lt;/ddscontrol&gt;
-  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Merges data from two datasets by using a join." left="4427" top="12065" logicalid="19" controlid="8" masterid="0" hint1="0" hint2="0" width="6747" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
+  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Merges data from two datasets by using a join." left="3813" top="9102" logicalid="36" controlid="6" masterid="0" hint1="0" hint2="0" width="6747" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
     &lt;control&gt;
       &lt;ddsxmlobjectstreaminitwrapper binary="000800005b1a00008c040000" /&gt;
     &lt;/control&gt;
@@ -2375,7 +2394,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arra
     &lt;/layoutobject&gt;
     &lt;shape groupshapeid="0" groupnode="0" /&gt;
   &lt;/ddscontrol&gt;
-  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Extracts data from a relational database by using a .NET provider." left="13264" top="3049" logicalid="26" controlid="15" masterid="0" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
+  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Extracts data from a relational database by using a .NET provider." left="17889" top="-364" logicalid="37" controlid="7" masterid="0" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
     &lt;control&gt;
       &lt;ddsxmlobjectstreaminitwrapper binary="000800000e0e00008c040000" /&gt;
     &lt;/control&gt;
@@ -2387,7 +2406,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arra
     &lt;/layoutobject&gt;
     &lt;shape groupshapeid="0" groupnode="0" /&gt;
   &lt;/ddscontrol&gt;
-  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Sorts data." left="12920" top="5483" logicalid="27" controlid="16" masterid="0" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
+  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Sorts data." left="17889" top="2070" logicalid="38" controlid="8" masterid="0" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
     &lt;control&gt;
       &lt;ddsxmlobjectstreaminitwrapper binary="000800000e0e00008c040000" /&gt;
     &lt;/control&gt;
@@ -2399,7 +2418,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arra
     &lt;/layoutobject&gt;
     &lt;shape groupshapeid="0" groupnode="0" /&gt;
   &lt;/ddscontrol&gt;
-  &lt;ddscontrol controlprogid="MSDDS.Polyline" left="14320" top="3814" logicalid="28" controlid="17" masterid="0" hint1="0" hint2="0" width="1143" height="2169" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
+  &lt;ddscontrol controlprogid="MSDDS.Polyline" left="19289" top="401" logicalid="39" controlid="9" masterid="0" hint1="0" hint2="0" width="799" height="2169" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
     &lt;control&gt;
       &lt;ddsxmlobj&gt;
         &lt;polyline endtypedst="3" endtypesrc="1" usercolor="32768" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" /&gt;
@@ -2412,14 +2431,12 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arra
         &lt;property name="VisibleAP" value="0" vartype="3" /&gt;
       &lt;/ddsxmlobj&gt;
     &lt;/layoutobject&gt;
-    &lt;connector lineroutestyle="Microsoft.DataWarehouse.Layout.GraphLayout100" sourceid="15" destid="16" sourceattachpoint="7" destattachpoint="6" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="2" relatedid="0" virtual="0"&gt;
-      &lt;point x="15063" y="4213" /&gt;
-      &lt;point x="15063" y="4848" /&gt;
-      &lt;point x="14719" y="4848" /&gt;
-      &lt;point x="14719" y="5483" /&gt;
+    &lt;connector lineroutestyle="Microsoft.DataWarehouse.Layout.GraphLayout100" sourceid="7" destid="8" sourceattachpoint="7" destattachpoint="6" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="2" relatedid="0" virtual="0"&gt;
+      &lt;point x="19688" y="800" /&gt;
+      &lt;point x="19688" y="2070" /&gt;
     &lt;/connector&gt;
   &lt;/ddscontrol&gt;
-  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Merges data from two datasets by using a join." left="7205" top="7546" logicalid="29" controlid="18" masterid="0" hint1="0" hint2="0" width="8387" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
+  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Merges data from two datasets by using a join." left="12174" top="4133" logicalid="40" controlid="10" masterid="0" hint1="0" hint2="0" width="8387" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
     &lt;control&gt;
       &lt;ddsxmlobjectstreaminitwrapper binary="00080000c32000008c040000" /&gt;
     &lt;/control&gt;
@@ -2431,7 +2448,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arra
     &lt;/layoutobject&gt;
     &lt;shape groupshapeid="0" groupnode="0" /&gt;
   &lt;/ddscontrol&gt;
-  &lt;ddscontrol controlprogid="MSDDS.Polyline" left="8147" top="6109" logicalid="30" controlid="19" masterid="0" hint1="0" hint2="0" width="2001" height="1937" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
+  &lt;ddscontrol controlprogid="MSDDS.Polyline" left="13116" top="2696" logicalid="41" controlid="11" masterid="0" hint1="0" hint2="0" width="2001" height="1937" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
     &lt;control&gt;
       &lt;ddsxmlobj&gt;
         &lt;polyline endtypedst="3" endtypesrc="1" usercolor="32768" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" /&gt;
@@ -2444,14 +2461,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arra
         &lt;property name="VisibleAP" value="0" vartype="3" /&gt;
       &lt;/ddsxmlobj&gt;
     &lt;/layoutobject&gt;
-    &lt;connector lineroutestyle="Microsoft.DataWarehouse.Layout.GraphLayout100" sourceid="5" destid="18" sourceattachpoint="7" destattachpoint="8" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="2" relatedid="0" virtual="0"&gt;
-      &lt;point x="8546" y="6508" /&gt;
-      &lt;point x="8546" y="7027" /&gt;
-      &lt;point x="9748" y="7027" /&gt;
-      &lt;point x="9748" y="7546" /&gt;
+    &lt;connector lineroutestyle="Microsoft.DataWarehouse.Layout.GraphLayout100" sourceid="3" destid="10" sourceattachpoint="7" destattachpoint="8" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="2" relatedid="0" virtual="0"&gt;
+      &lt;point x="13515" y="3095" /&gt;
+      &lt;point x="13515" y="3614" /&gt;
+      &lt;point x="14717" y="3614" /&gt;
+      &lt;point x="14717" y="4133" /&gt;
     &lt;/connector&gt;
   &lt;/ddscontrol&gt;
-  &lt;ddscontrol controlprogid="MSDDS.Polyline" left="12649" top="6248" logicalid="33" controlid="22" masterid="0" hint1="0" hint2="0" width="2470" height="1798" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
+  &lt;ddscontrol controlprogid="MSDDS.Polyline" left="17618" top="2835" logicalid="42" controlid="12" masterid="0" hint1="0" hint2="0" width="2470" height="1798" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
     &lt;control&gt;
       &lt;ddsxmlobj&gt;
         &lt;polyline endtypedst="3" endtypesrc="1" usercolor="32768" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" /&gt;
@@ -2464,14 +2481,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arra
         &lt;property name="VisibleAP" value="0" vartype="3" /&gt;
       &lt;/ddsxmlobj&gt;
     &lt;/layoutobject&gt;
-    &lt;connector lineroutestyle="Microsoft.DataWarehouse.Layout.GraphLayout100" sourceid="16" destid="18" sourceattachpoint="7" destattachpoint="20" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="2" relatedid="0" virtual="0"&gt;
-      &lt;point x="14719" y="6647" /&gt;
-      &lt;point x="14719" y="7096" /&gt;
-      &lt;point x="13048" y="7096" /&gt;
-      &lt;point x="13048" y="7546" /&gt;
+    &lt;connector lineroutestyle="Microsoft.DataWarehouse.Layout.GraphLayout100" sourceid="8" destid="10" sourceattachpoint="7" destattachpoint="20" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="2" relatedid="0" virtual="0"&gt;
+      &lt;point x="19688" y="3234" /&gt;
+      &lt;point x="19688" y="3671" /&gt;
+      &lt;point x="18017" y="3671" /&gt;
+      &lt;point x="18017" y="4133" /&gt;
     &lt;/connector&gt;
   &lt;/ddscontrol&gt;
-  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Executes a custom script." left="12548" top="9081" logicalid="38" controlid="27" masterid="0" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
+  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Executes a custom script." left="14580" top="6753" logicalid="43" controlid="13" masterid="0" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
     &lt;control&gt;
       &lt;ddsxmlobjectstreaminitwrapper binary="000800000e0e00008c040000" /&gt;
     &lt;/control&gt;
@@ -2483,7 +2500,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arra
     &lt;/layoutobject&gt;
     &lt;shape groupshapeid="0" groupnode="0" /&gt;
   &lt;/ddscontrol&gt;
-  &lt;ddscontrol controlprogid="MSDDS.Polyline" left="10999" top="8311" logicalid="39" controlid="28" masterid="0" hint1="0" hint2="0" width="3748" height="1270" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
+  &lt;ddscontrol controlprogid="MSDDS.Polyline" left="15968" top="4898" logicalid="44" controlid="14" masterid="0" hint1="0" hint2="0" width="811" height="2355" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
     &lt;control&gt;
       &lt;ddsxmlobj&gt;
         &lt;polyline endtypedst="3" endtypesrc="1" usercolor="32768" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" /&gt;
@@ -2496,14 +2513,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arra
         &lt;property name="VisibleAP" value="0" vartype="3" /&gt;
       &lt;/ddsxmlobj&gt;
     &lt;/layoutobject&gt;
-    &lt;connector lineroutestyle="Microsoft.DataWarehouse.Layout.GraphLayout100" sourceid="18" destid="27" sourceattachpoint="15" destattachpoint="6" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="2" relatedid="0" virtual="0"&gt;
-      &lt;point x="11398" y="8710" /&gt;
-      &lt;point x="11398" y="8895" /&gt;
-      &lt;point x="14347" y="8895" /&gt;
-      &lt;point x="14347" y="9081" /&gt;
+    &lt;connector lineroutestyle="Microsoft.DataWarehouse.Layout.GraphLayout100" sourceid="10" destid="13" sourceattachpoint="15" destattachpoint="6" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="2" relatedid="0" virtual="0"&gt;
+      &lt;point x="16367" y="5297" /&gt;
+      &lt;point x="16367" y="6025" /&gt;
+      &lt;point x="16379" y="6025" /&gt;
+      &lt;point x="16379" y="6753" /&gt;
     &lt;/connector&gt;
   &lt;/ddscontrol&gt;
-  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Data Conversion" left="114" top="7824" logicalid="45" controlid="34" masterid="0" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
+  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Data Conversion" left="1220" top="1845" logicalid="45" controlid="15" masterid="0" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
     &lt;control&gt;
       &lt;ddsxmlobjectstreaminitwrapper binary="000800000e0e00008c040000" /&gt;
     &lt;/control&gt;
@@ -2515,7 +2532,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arra
     &lt;/layoutobject&gt;
     &lt;shape groupshapeid="0" groupnode="0" /&gt;
   &lt;/ddscontrol&gt;
-  &lt;ddscontrol controlprogid="MSDDS.Polyline" left="1514" top="3781" logicalid="46" controlid="35" masterid="0" hint1="0" hint2="0" width="2908" height="4543" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
+  &lt;ddscontrol controlprogid="MSDDS.Polyline" left="2613" top="342" logicalid="46" controlid="16" masterid="0" hint1="0" hint2="0" width="806" height="2003" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
     &lt;control&gt;
       &lt;ddsxmlobj&gt;
         &lt;polyline endtypedst="3" endtypesrc="1" usercolor="32768" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" /&gt;
@@ -2528,14 +2545,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arra
         &lt;property name="VisibleAP" value="0" vartype="3" /&gt;
       &lt;/ddsxmlobj&gt;
     &lt;/layoutobject&gt;
-    &lt;connector lineroutestyle="Microsoft.DataWarehouse.Layout.GraphLayout100" sourceid="1" destid="34" sourceattachpoint="7" destattachpoint="6" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="2" relatedid="0" virtual="0"&gt;
-      &lt;point x="4022" y="4180" /&gt;
-      &lt;point x="4022" y="6002" /&gt;
-      &lt;point x="1913" y="6002" /&gt;
-      &lt;point x="1913" y="7824" /&gt;
+    &lt;connector lineroutestyle="Microsoft.DataWarehouse.Layout.GraphLayout100" sourceid="1" destid="15" sourceattachpoint="7" destattachpoint="6" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="2" relatedid="0" virtual="0"&gt;
+      &lt;point x="3012" y="741" /&gt;
+      &lt;point x="3012" y="1293" /&gt;
+      &lt;point x="3019" y="1293" /&gt;
+      &lt;point x="3019" y="1845" /&gt;
     &lt;/connector&gt;
   &lt;/ddscontrol&gt;
-  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Evaluates and directs rows in a dataset." left="14639" top="11820" logicalid="48" controlid="37" masterid="0" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
+  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Evaluates and directs rows in a dataset." left="14580" top="9095" logicalid="47" controlid="17" masterid="0" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
     &lt;control&gt;
       &lt;ddsxmlobjectstreaminitwrapper binary="000800000e0e00008c040000" /&gt;
     &lt;/control&gt;
@@ -2547,10 +2564,12 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arra
     &lt;/layoutobject&gt;
     &lt;shape groupshapeid="0" groupnode="0" /&gt;
   &lt;/ddscontrol&gt;
-  &lt;ddscontrol controlprogid="MSDDS.Polyline" left="13948" top="9846" logicalid="49" controlid="38" masterid="0" hint1="0" hint2="0" width="2890" height="2474" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
+  &lt;ddscontrol controlprogid="MSDDS.Polyline" left="15980" top="7518" logicalid="48" controlid="18" masterid="0" hint1="0" hint2="0" width="799" height="2077" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
     &lt;control&gt;
       &lt;ddsxmlobj&gt;
-        &lt;polyline endtypedst="3" endtypesrc="1" usercolor="32768" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" /&gt;
+        &lt;polyline endtypedst="3" endtypesrc="1" usercolor="32768" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1"&gt;
+          &lt;adornment percentpos="50" controlid="98" width="423" height="423" side="1" behavior="2" himetric="589" distfromline="175" startobj="0" x="16554" y="8294" visible="1" allowoverlap="1" usepercent="1" /&gt;
+        &lt;/polyline&gt;
       &lt;/ddsxmlobj&gt;
     &lt;/control&gt;
     &lt;layoutobject&gt;
@@ -2560,18 +2579,16 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arra
         &lt;property name="VisibleAP" value="0" vartype="3" /&gt;
       &lt;/ddsxmlobj&gt;
     &lt;/layoutobject&gt;
-    &lt;connector lineroutestyle="Microsoft.DataWarehouse.Layout.GraphLayout100" sourceid="27" destid="37" sourceattachpoint="7" destattachpoint="6" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="2" relatedid="0" virtual="0"&gt;
-      &lt;point x="14347" y="10245" /&gt;
-      &lt;point x="14347" y="11032" /&gt;
-      &lt;point x="16438" y="11032" /&gt;
-      &lt;point x="16438" y="11820" /&gt;
+    &lt;connector lineroutestyle="Microsoft.DataWarehouse.Layout.GraphLayout100" sourceid="13" destid="17" sourceattachpoint="7" destattachpoint="6" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="2" relatedid="0" virtual="0"&gt;
+      &lt;point x="16379" y="7917" /&gt;
+      &lt;point x="16379" y="9095" /&gt;
     &lt;/connector&gt;
   &lt;/ddscontrol&gt;
-  &lt;ddscontrol controlprogid="MSDDS.Polyline" left="10874" top="12003" logicalid="52" controlid="41" masterid="0" hint1="0" hint2="0" width="4165" height="1044" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
+  &lt;ddscontrol controlprogid="MSDDS.Polyline" left="10260" top="9278" logicalid="49" controlid="19" masterid="0" hint1="0" hint2="0" width="4720" height="806" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
     &lt;control&gt;
       &lt;ddsxmlobj&gt;
         &lt;polyline endtypedst="3" endtypesrc="1" usercolor="32768" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1"&gt;
-          &lt;adornment percentpos="20.4632500455955" controlid="42" width="2854" height="344" side="0" behavior="2" himetric="759" distfromline="175" startobj="0" x="10949" y="11883" visible="1" allowoverlap="1" usepercent="1" /&gt;
+          &lt;adornment percentpos="37.3975664266203" controlid="32" width="2854" height="344" side="0" behavior="2" himetric="1506" distfromline="175" startobj="0" x="10088" y="9158" visible="1" allowoverlap="1" usepercent="1" /&gt;
         &lt;/polyline&gt;
       &lt;/ddsxmlobj&gt;
     &lt;/control&gt;
@@ -2582,25 +2599,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arra
         &lt;property name="VisibleAP" value="0" vartype="3" /&gt;
       &lt;/ddsxmlobj&gt;
     &lt;/layoutobject&gt;
-    &lt;connector lineroutestyle="Microsoft.DataWarehouse.Layout.GraphLayout100" sourceid="37" destid="8" sourceattachpoint="14" destattachpoint="23" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="2" relatedid="0" virtual="0"&gt;
-      &lt;point x="14639" y="12402" /&gt;
-      &lt;point x="12906" y="12402" /&gt;
-      &lt;point x="12906" y="12647" /&gt;
-      &lt;point x="11174" y="12647" /&gt;
+    &lt;connector lineroutestyle="Microsoft.DataWarehouse.Layout.GraphLayout100" sourceid="17" destid="6" sourceattachpoint="14" destattachpoint="23" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="2" relatedid="0" virtual="0"&gt;
+      &lt;point x="14580" y="9677" /&gt;
+      &lt;point x="12570" y="9677" /&gt;
+      &lt;point x="12570" y="9684" /&gt;
+      &lt;point x="10560" y="9684" /&gt;
     &lt;/connector&gt;
   &lt;/ddscontrol&gt;
-  &lt;ddscontrol controlprogid="MSDDS.Text" left="10949" top="11883" logicalid="53" controlid="42" masterid="41" hint1="0" hint2="0" width="2854" height="344" noresize="1" nomove="0" nodefaultattachpoints="1" autodrag="1" usedefaultiddshape="1" selectable="0" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="1" groupcollapsed="0" tabstop="0" visible="1" snaptogrid="0"&gt;
-    &lt;control&gt;
-      &lt;ddsxmlobjectstreaminitwrapper binary="00020000260b000058010000030000000000050000800800008001000000250001000000900144420100065461686f6d6114004e006f007400690066006900610062006c006500200043007500730074006f006d0065007200730000000000" /&gt;
-    &lt;/control&gt;
-    &lt;layoutobject&gt;
-      &lt;ddsxmlobj&gt;
-        &lt;property name="AnnotationAdornment" value="-1" vartype="11" /&gt;
-      &lt;/ddsxmlobj&gt;
-    &lt;/layoutobject&gt;
-    &lt;shape groupshapeid="0" groupnode="0" /&gt;
-  &lt;/ddscontrol&gt;
-  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Sorts data." left="1622" top="10259" logicalid="55" controlid="44" masterid="0" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
+  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Sorts data." left="1220" top="4173" logicalid="51" controlid="21" masterid="0" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
     &lt;control&gt;
       &lt;ddsxmlobjectstreaminitwrapper binary="000800000e0e00008c040000" /&gt;
     &lt;/control&gt;
@@ -2612,7 +2618,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arra
     &lt;/layoutobject&gt;
     &lt;shape groupshapeid="0" groupnode="0" /&gt;
   &lt;/ddscontrol&gt;
-  &lt;ddscontrol controlprogid="MSDDS.Polyline" left="1514" top="8589" logicalid="56" controlid="45" masterid="0" hint1="0" hint2="0" width="2307" height="2170" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
+  &lt;ddscontrol controlprogid="MSDDS.Polyline" left="2620" top="2610" logicalid="52" controlid="22" masterid="0" hint1="0" hint2="0" width="799" height="2063" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
     &lt;control&gt;
       &lt;ddsxmlobj&gt;
         &lt;polyline endtypedst="3" endtypesrc="1" usercolor="32768" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" /&gt;
@@ -2625,14 +2631,12 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arra
         &lt;property name="VisibleAP" value="0" vartype="3" /&gt;
       &lt;/ddsxmlobj&gt;
     &lt;/layoutobject&gt;
-    &lt;connector lineroutestyle="Microsoft.DataWarehouse.Layout.GraphLayout100" sourceid="34" destid="44" sourceattachpoint="7" destattachpoint="6" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="2" relatedid="0" virtual="0"&gt;
-      &lt;point x="1913" y="8988" /&gt;
-      &lt;point x="1913" y="9623" /&gt;
-      &lt;point x="3421" y="9623" /&gt;
-      &lt;point x="3421" y="10259" /&gt;
+    &lt;connector lineroutestyle="Microsoft.DataWarehouse.Layout.GraphLayout100" sourceid="15" destid="21" sourceattachpoint="7" destattachpoint="6" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="2" relatedid="0" virtual="0"&gt;
+      &lt;point x="3019" y="3009" /&gt;
+      &lt;point x="3019" y="4173" /&gt;
     &lt;/connector&gt;
   &lt;/ddscontrol&gt;
-  &lt;ddscontrol controlprogid="MSDDS.Polyline" left="3022" top="11024" logicalid="57" controlid="46" masterid="0" hint1="0" hint2="0" width="5178" height="1541" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
+  &lt;ddscontrol controlprogid="MSDDS.Polyline" left="2620" top="4938" logicalid="53" controlid="23" masterid="0" hint1="0" hint2="0" width="4966" height="4664" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
     &lt;control&gt;
       &lt;ddsxmlobj&gt;
         &lt;polyline endtypedst="3" endtypesrc="1" usercolor="32768" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" /&gt;
@@ -2645,14 +2649,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arra
         &lt;property name="VisibleAP" value="0" vartype="3" /&gt;
       &lt;/ddsxmlobj&gt;
     &lt;/layoutobject&gt;
-    &lt;connector lineroutestyle="Microsoft.DataWarehouse.Layout.GraphLayout100" sourceid="44" destid="8" sourceattachpoint="7" destattachpoint="10" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="2" relatedid="0" virtual="0"&gt;
-      &lt;point x="3421" y="11423" /&gt;
-      &lt;point x="3421" y="11744" /&gt;
-      &lt;point x="7800" y="11744" /&gt;
-      &lt;point x="7800" y="12065" /&gt;
+    &lt;connector lineroutestyle="Microsoft.DataWarehouse.Layout.GraphLayout100" sourceid="21" destid="6" sourceattachpoint="7" destattachpoint="10" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="2" relatedid="0" virtual="0"&gt;
+      &lt;point x="3019" y="5337" /&gt;
+      &lt;point x="3019" y="7219" /&gt;
+      &lt;point x="7186" y="7219" /&gt;
+      &lt;point x="7186" y="9102" /&gt;
     &lt;/connector&gt;
   &lt;/ddscontrol&gt;
-  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Creates copies of a dataset." left="11015" top="14042" logicalid="58" controlid="47" masterid="0" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
+  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Creates copies of a dataset." left="5427" top="11185" logicalid="54" controlid="24" masterid="0" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
     &lt;control&gt;
       &lt;ddsxmlobjectstreaminitwrapper binary="000800000e0e00008c040000" /&gt;
     &lt;/control&gt;
@@ -2664,10 +2668,12 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arra
     &lt;/layoutobject&gt;
     &lt;shape groupshapeid="0" groupnode="0" /&gt;
   &lt;/ddscontrol&gt;
-  &lt;ddscontrol controlprogid="MSDDS.Polyline" left="7401" top="12830" logicalid="59" controlid="48" masterid="0" hint1="0" hint2="0" width="5813" height="1712" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
+  &lt;ddscontrol controlprogid="MSDDS.Polyline" left="6787" top="9867" logicalid="55" controlid="25" masterid="0" hint1="0" hint2="0" width="839" height="1818" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
     &lt;control&gt;
       &lt;ddsxmlobj&gt;
-        &lt;polyline endtypedst="3" endtypesrc="1" usercolor="32768" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" /&gt;
+        &lt;polyline endtypedst="3" endtypesrc="1" usercolor="32768" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1"&gt;
+          &lt;adornment percentpos="50" controlid="36" width="423" height="423" side="1" behavior="2" himetric="479" distfromline="175" startobj="0" x="7381" y="10127" visible="1" allowoverlap="1" usepercent="1" /&gt;
+        &lt;/polyline&gt;
       &lt;/ddsxmlobj&gt;
     &lt;/control&gt;
     &lt;layoutobject&gt;
@@ -2677,34 +2683,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arra
         &lt;property name="VisibleAP" value="0" vartype="3" /&gt;
       &lt;/ddsxmlobj&gt;
     &lt;/layoutobject&gt;
-    &lt;connector lineroutestyle="Microsoft.DataWarehouse.Layout.GraphLayout100" sourceid="8" destid="47" sourceattachpoint="11" destattachpoint="6" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="2" relatedid="0" virtual="0"&gt;
-      &lt;point x="7800" y="13229" /&gt;
-      &lt;point x="7800" y="13635" /&gt;
-      &lt;point x="12814" y="13635" /&gt;
-      &lt;point x="12814" y="14042" /&gt;
+    &lt;connector lineroutestyle="Microsoft.DataWarehouse.Layout.GraphLayout100" sourceid="6" destid="24" sourceattachpoint="11" destattachpoint="6" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="2" relatedid="0" virtual="0"&gt;
+      &lt;point x="7186" y="10266" /&gt;
+      &lt;point x="7186" y="10725" /&gt;
+      &lt;point x="7226" y="10725" /&gt;
+      &lt;point x="7226" y="11185" /&gt;
     &lt;/connector&gt;
   &lt;/ddscontrol&gt;
-  &lt;ddscontrol controlprogid="MSDDS.Polyline" left="9305" top="14225" logicalid="60" controlid="49" masterid="0" hint1="0" hint2="0" width="2110" height="1599" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
-    &lt;control&gt;
-      &lt;ddsxmlobj&gt;
-        &lt;polyline endtypedst="3" endtypesrc="1" usercolor="32768" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" /&gt;
-      &lt;/ddsxmlobj&gt;
-    &lt;/control&gt;
-    &lt;layoutobject&gt;
-      &lt;ddsxmlobj&gt;
-        &lt;property name="LogicalObject" value="{FE31221F-FA86-4485-9A25-1B1D3B091387}/paths/999" vartype="8" /&gt;
-        &lt;property name="Virtual" value="0" vartype="11" /&gt;
-        &lt;property name="VisibleAP" value="0" vartype="3" /&gt;
-      &lt;/ddsxmlobj&gt;
-    &lt;/layoutobject&gt;
-    &lt;connector lineroutestyle="Microsoft.DataWarehouse.Layout.GraphLayout100" sourceid="47" destid="7" sourceattachpoint="14" destattachpoint="15" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="2" relatedid="0" virtual="0"&gt;
-      &lt;point x="11015" y="14624" /&gt;
-      &lt;point x="10310" y="14624" /&gt;
-      &lt;point x="10310" y="15424" /&gt;
-      &lt;point x="9605" y="15424" /&gt;
-    &lt;/connector&gt;
-  &lt;/ddscontrol&gt;
-  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Updates column values using expressions" left="17576" top="14095" logicalid="61" controlid="50" masterid="0" hint1="0" hint2="0" width="5582" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
+  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Updates column values using expressions" left="10823" top="11185" logicalid="57" controlid="27" masterid="0" hint1="0" hint2="0" width="5582" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
     &lt;control&gt;
       &lt;ddsxmlobjectstreaminitwrapper binary="00080000ce1500008c040000" /&gt;
     &lt;/control&gt;
@@ -2716,7 +2702,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arra
     &lt;/layoutobject&gt;
     &lt;shape groupshapeid="0" groupnode="0" /&gt;
   &lt;/ddscontrol&gt;
-  &lt;ddscontrol controlprogid="MSDDS.Polyline" left="14214" top="14225" logicalid="62" controlid="51" masterid="0" hint1="0" hint2="0" width="3662" height="852" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
+  &lt;ddscontrol controlprogid="MSDDS.Polyline" left="8626" top="11368" logicalid="58" controlid="28" masterid="0" hint1="0" hint2="0" width="2497" height="799" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
     &lt;control&gt;
       &lt;ddsxmlobj&gt;
         &lt;polyline endtypedst="3" endtypesrc="1" usercolor="32768" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" /&gt;
@@ -2729,14 +2715,12 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arra
         &lt;property name="VisibleAP" value="0" vartype="3" /&gt;
       &lt;/ddsxmlobj&gt;
     &lt;/layoutobject&gt;
-    &lt;connector lineroutestyle="Microsoft.DataWarehouse.Layout.GraphLayout100" sourceid="47" destid="50" sourceattachpoint="15" destattachpoint="-1" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="2" relatedid="0" virtual="0"&gt;
-      &lt;point x="14613" y="14624" /&gt;
-      &lt;point x="16094" y="14624" /&gt;
-      &lt;point x="16094" y="14677" /&gt;
-      &lt;point x="17576" y="14677" /&gt;
+    &lt;connector lineroutestyle="Microsoft.DataWarehouse.Layout.GraphLayout100" sourceid="24" destid="27" sourceattachpoint="15" destattachpoint="18" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="2" relatedid="0" virtual="0"&gt;
+      &lt;point x="9025" y="11767" /&gt;
+      &lt;point x="10823" y="11767" /&gt;
     &lt;/connector&gt;
   &lt;/ddscontrol&gt;
-  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Flat File Destination" left="25911" top="14096" logicalid="67" controlid="56" masterid="0" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
+  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Flat File Destination" left="26832" top="11184" logicalid="59" controlid="29" masterid="0" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
     &lt;control&gt;
       &lt;ddsxmlobjectstreaminitwrapper binary="000800000e0e00008c040000" /&gt;
     &lt;/control&gt;
@@ -2748,7 +2732,41 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arra
     &lt;/layoutobject&gt;
     &lt;shape groupshapeid="0" groupnode="0" /&gt;
   &lt;/ddscontrol&gt;
-  &lt;ddscontrol controlprogid="MSDDS.Polyline" left="22759" top="14278" logicalid="68" controlid="57" masterid="0" hint1="0" hint2="0" width="3452" height="800" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
+  &lt;ddscontrol controlprogid="MSDDS.Text" left="10088" top="9158" logicalid="62" controlid="32" masterid="19" hint1="0" hint2="0" width="2854" height="344" noresize="1" nomove="0" nodefaultattachpoints="1" autodrag="1" usedefaultiddshape="1" selectable="0" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="1" groupcollapsed="0" tabstop="0" visible="1" snaptogrid="0"&gt;
+    &lt;control&gt;
+      &lt;ddsxmlobjectstreaminitwrapper binary="00020000260b000058010000030000000000050000800800008001000000350001000000900144420100065461686f6d6114004e006f007400690066006900610062006c006500200043007500730074006f006d0065007200730000000000" /&gt;
+    &lt;/control&gt;
+    &lt;layoutobject&gt;
+      &lt;ddsxmlobj&gt;
+        &lt;property name="AnnotationAdornment" value="-1" vartype="11" /&gt;
+      &lt;/ddsxmlobj&gt;
+    &lt;/layoutobject&gt;
+    &lt;shape groupshapeid="0" groupnode="0" /&gt;
+  &lt;/ddscontrol&gt;
+  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" left="7381" top="10127" logicalid="66" controlid="36" masterid="25" hint1="0" hint2="0" width="423" height="423" noresize="1" nomove="1" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="1" selectable="0" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="1" groupcollapsed="0" tabstop="0" visible="1" snaptogrid="0"&gt;
+    &lt;control&gt;
+      &lt;ddsxmlobjectstreaminitwrapper binary="00080000a7010000a7010000" /&gt;
+    &lt;/control&gt;
+    &lt;layoutobject&gt;
+      &lt;ddsxmlobj&gt;
+        &lt;property name="VisualizerAdornment" value="-1" vartype="11" /&gt;
+      &lt;/ddsxmlobj&gt;
+    &lt;/layoutobject&gt;
+    &lt;shape groupshapeid="0" groupnode="0" /&gt;
+  &lt;/ddscontrol&gt;
+  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Evaluates and directs rows in a dataset." left="18396" top="11184" logicalid="91" controlid="61" masterid="0" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
+    &lt;control&gt;
+      &lt;ddsxmlobjectstreaminitwrapper binary="000800000e0e00008c040000" /&gt;
+    &lt;/control&gt;
+    &lt;layoutobject&gt;
+      &lt;ddsxmlobj&gt;
+        &lt;property name="LogicalObject" value="{FE31221F-FA86-4485-9A25-1B1D3B091387}/components/1183" vartype="8" /&gt;
+        &lt;property name="ShowConnectorSource" value="0" vartype="2" /&gt;
+      &lt;/ddsxmlobj&gt;
+    &lt;/layoutobject&gt;
+    &lt;shape groupshapeid="0" groupnode="0" /&gt;
+  &lt;/ddscontrol&gt;
+  &lt;ddscontrol controlprogid="MSDDS.Polyline" left="16006" top="11367" logicalid="92" controlid="62" masterid="0" hint1="0" hint2="0" width="2690" height="800" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
     &lt;control&gt;
       &lt;ddsxmlobj&gt;
         &lt;polyline endtypedst="3" endtypesrc="1" usercolor="32768" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" /&gt;
@@ -2756,120 +2774,202 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arra
     &lt;/control&gt;
     &lt;layoutobject&gt;
       &lt;ddsxmlobj&gt;
-        &lt;property name="LogicalObject" value="{FE31221F-FA86-4485-9A25-1B1D3B091387}/paths/1072" vartype="8" /&gt;
+        &lt;property name="LogicalObject" value="{FE31221F-FA86-4485-9A25-1B1D3B091387}/paths/1190" vartype="8" /&gt;
         &lt;property name="Virtual" value="0" vartype="11" /&gt;
         &lt;property name="VisibleAP" value="0" vartype="3" /&gt;
       &lt;/ddsxmlobj&gt;
     &lt;/layoutobject&gt;
-    &lt;connector lineroutestyle="Microsoft.DataWarehouse.Layout.GraphLayout100" sourceid="50" destid="56" sourceattachpoint="19" destattachpoint="14" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="2" relatedid="0" virtual="0"&gt;
-      &lt;point x="23158" y="14677" /&gt;
-      &lt;point x="24534" y="14677" /&gt;
-      &lt;point x="24534" y="14678" /&gt;
-      &lt;point x="25911" y="14678" /&gt;
+    &lt;connector lineroutestyle="Microsoft.DataWarehouse.Layout.GraphLayout100" sourceid="27" destid="61" sourceattachpoint="19" destattachpoint="14" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="2" relatedid="0" virtual="0"&gt;
+      &lt;point x="16405" y="11767" /&gt;
+      &lt;point x="17400" y="11767" /&gt;
+      &lt;point x="17400" y="11766" /&gt;
+      &lt;point x="18396" y="11766" /&gt;
     &lt;/connector&gt;
   &lt;/ddscontrol&gt;
-&lt;/dds&gt;&lt;/dwd:Layout&gt;&lt;dwd:PersistedViewPortLeft&gt;-1500&lt;/dwd:PersistedViewPortLeft&gt;&lt;dwd:PersistedViewPortTop&gt;1792&lt;/dwd:PersistedViewPortTop&gt;&lt;/dwd:DtsDataFlowDiagram&gt;&lt;dwd:DtsComponentDesignerPropertiesList&gt;&lt;dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:key xsi:type="xsd:string"&gt;1	DataSourceViewID&lt;/dwd:key&gt;&lt;/dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:key xsi:type="xsd:string"&gt;656	DataSourceViewID&lt;/dwd:key&gt;&lt;/dwd:DtsComponentDesignTimeProperty&gt;&lt;/dwd:DtsComponentDesignerPropertiesList&gt;&lt;/TaskHost&gt;</DTS:Property>
+  &lt;ddscontrol controlprogid="MSDDS.Polyline" left="21595" top="11367" logicalid="93" controlid="63" masterid="0" hint1="0" hint2="0" width="5537" height="799" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
+    &lt;control&gt;
+      &lt;ddsxmlobj&gt;
+        &lt;polyline endtypedst="3" endtypesrc="1" usercolor="32768" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1"&gt;
+          &lt;adornment percentpos="22.9226953286482" controlid="64" width="6805" height="344" side="0" behavior="2" himetric="1109" distfromline="175" startobj="0" x="21543" y="11941" visible="1" allowoverlap="1" usepercent="1" /&gt;
+        &lt;/polyline&gt;
+      &lt;/ddsxmlobj&gt;
+    &lt;/control&gt;
+    &lt;layoutobject&gt;
+      &lt;ddsxmlobj&gt;
+        &lt;property name="LogicalObject" value="{FE31221F-FA86-4485-9A25-1B1D3B091387}/paths/1216" vartype="8" /&gt;
+        &lt;property name="Virtual" value="0" vartype="11" /&gt;
+        &lt;property name="VisibleAP" value="0" vartype="3" /&gt;
+      &lt;/ddsxmlobj&gt;
+    &lt;/layoutobject&gt;
+    &lt;connector lineroutestyle="Microsoft.DataWarehouse.Layout.GraphLayout100" sourceid="61" destid="29" sourceattachpoint="15" destattachpoint="14" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="2" relatedid="0" virtual="0"&gt;
+      &lt;point x="21994" y="11766" /&gt;
+      &lt;point x="26832" y="11766" /&gt;
+    &lt;/connector&gt;
+  &lt;/ddscontrol&gt;
+  &lt;ddscontrol controlprogid="MSDDS.Text" left="21543" top="11941" logicalid="94" controlid="64" masterid="63" hint1="0" hint2="0" width="6805" height="344" noresize="1" nomove="0" nodefaultattachpoints="1" autodrag="1" usedefaultiddshape="1" selectable="0" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="1" groupcollapsed="0" tabstop="0" visible="1" snaptogrid="0"&gt;
+    &lt;control&gt;
+      &lt;ddsxmlobjectstreaminitwrapper binary="00020000951a000058010000030000000000050000800800008001000000250001000000900144420100065461686f6d612e0043007500730074006f006d0065007200730020004d0069007300730069006e006700200049006e00740065006e0064006500640020004300680061006e006e0065006c00200049006e0066006f0072006d006100740069006f006e0000000000" /&gt;
+    &lt;/control&gt;
+    &lt;layoutobject&gt;
+      &lt;ddsxmlobj&gt;
+        &lt;property name="AnnotationAdornment" value="-1" vartype="11" /&gt;
+      &lt;/ddsxmlobj&gt;
+    &lt;/layoutobject&gt;
+    &lt;shape groupshapeid="0" groupnode="0" /&gt;
+  &lt;/ddscontrol&gt;
+  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" left="16554" top="8294" logicalid="128" controlid="98" masterid="18" hint1="0" hint2="0" width="423" height="423" noresize="1" nomove="1" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="1" selectable="0" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="1" groupcollapsed="0" tabstop="0" visible="1" snaptogrid="0"&gt;
+    &lt;control&gt;
+      &lt;ddsxmlobjectstreaminitwrapper binary="00080000a7010000a7010000" /&gt;
+    &lt;/control&gt;
+    &lt;layoutobject&gt;
+      &lt;ddsxmlobj&gt;
+        &lt;property name="VisualizerAdornment" value="-1" vartype="11" /&gt;
+      &lt;/ddsxmlobj&gt;
+    &lt;/layoutobject&gt;
+    &lt;shape groupshapeid="0" groupnode="0" /&gt;
+  &lt;/ddscontrol&gt;
+  &lt;ddscontrol controlprogid="MSDDS.Polyline" left="19785" top="11949" logicalid="245" controlid="215" masterid="0" hint1="0" hint2="0" width="810" height="2467" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
+    &lt;control&gt;
+      &lt;ddsxmlobj&gt;
+        &lt;polyline endtypedst="3" endtypesrc="1" usercolor="32768" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1"&gt;
+          &lt;adornment percentpos="42.9526462395543" controlid="216" width="4354" height="344" side="0" behavior="2" himetric="678" distfromline="175" startobj="0" x="15666" y="12577" visible="1" allowoverlap="1" usepercent="1" /&gt;
+        &lt;/polyline&gt;
+      &lt;/ddsxmlobj&gt;
+    &lt;/control&gt;
+    &lt;layoutobject&gt;
+      &lt;ddsxmlobj&gt;
+        &lt;property name="LogicalObject" value="{FE31221F-FA86-4485-9A25-1B1D3B091387}/paths/1276" vartype="8" /&gt;
+        &lt;property name="Virtual" value="0" vartype="11" /&gt;
+        &lt;property name="VisibleAP" value="0" vartype="3" /&gt;
+      &lt;/ddsxmlobj&gt;
+    &lt;/layoutobject&gt;
+    &lt;connector lineroutestyle="Microsoft.DataWarehouse.Layout.GraphLayout100" sourceid="61" destid="5" sourceattachpoint="7" destattachpoint="6" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="2" relatedid="0" virtual="0"&gt;
+      &lt;point x="20195" y="12348" /&gt;
+      &lt;point x="20195" y="13132" /&gt;
+      &lt;point x="20184" y="13132" /&gt;
+      &lt;point x="20184" y="13916" /&gt;
+    &lt;/connector&gt;
+  &lt;/ddscontrol&gt;
+  &lt;ddscontrol controlprogid="MSDDS.Text" left="15666" top="12577" logicalid="246" controlid="216" masterid="215" hint1="0" hint2="0" width="4354" height="344" noresize="1" nomove="0" nodefaultattachpoints="1" autodrag="1" usedefaultiddshape="1" selectable="0" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="1" groupcollapsed="0" tabstop="0" visible="1" snaptogrid="0"&gt;
+    &lt;control&gt;
+      &lt;ddsxmlobjectstreaminitwrapper binary="000200000211000058010000030000000000050000800800008001000000250001000000900144420100065461686f6d61200043006f006e0064006900740069006f006e0061006c002000530070006c00690074002000440065006600610075006c00740020004f007500740070007500740000000000" /&gt;
+    &lt;/control&gt;
+    &lt;layoutobject&gt;
+      &lt;ddsxmlobj&gt;
+        &lt;property name="AnnotationAdornment" value="-1" vartype="11" /&gt;
+      &lt;/ddsxmlobj&gt;
+    &lt;/layoutobject&gt;
+    &lt;shape groupshapeid="0" groupnode="0" /&gt;
+  &lt;/ddscontrol&gt;
+&lt;/dds&gt;&lt;/dwd:Layout&gt;&lt;dwd:PersistedViewPortLeft&gt;-1500&lt;/dwd:PersistedViewPortLeft&gt;&lt;dwd:PersistedViewPortTop&gt;-1450&lt;/dwd:PersistedViewPortTop&gt;&lt;/dwd:DtsDataFlowDiagram&gt;&lt;dwd:DtsComponentDesignerPropertiesList&gt;&lt;dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:key xsi:type="xsd:string"&gt;1	DataSourceViewID&lt;/dwd:key&gt;&lt;/dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:key xsi:type="xsd:string"&gt;656	DataSourceViewID&lt;/dwd:key&gt;&lt;/dwd:DtsComponentDesignTimeProperty&gt;&lt;/dwd:DtsComponentDesignerPropertiesList&gt;&lt;/TaskHost&gt;</DTS:Property>
 <DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
 <DTS:Property DTS:Name="ObjectName">{FE31221F-FA86-4485-9A25-1B1D3B091387}</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{C3877F17-F6FC-4CCB-9E39-ABACA6BB8D83}</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{0BB016F5-D16F-4401-9F38-2F1D0234E16A}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable>
 <DTS:PackageVariable>
 <DTS:Property DTS:Name="PackageVariableValue" DTS:DataType="8">&lt;PipelinePath xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:SourceName&gt;Multicast Output 2&lt;/dwd:SourceName&gt;&lt;dwd:DestinationName&gt;Derived Column Input&lt;/dwd:DestinationName&gt;&lt;/PipelinePath&gt;</DTS:Property>
 <DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
 <DTS:Property DTS:Name="ObjectName">{FE31221F-FA86-4485-9A25-1B1D3B091387}-1007</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{15EA17F1-93A9-42D9-A766-6531BF7F066F}</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{A428AD50-D487-4E17-B688-69C24CD486F7}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable>
 <DTS:PackageVariable>
-<DTS:Property DTS:Name="PackageVariableValue" DTS:DataType="8">&lt;PipelinePath xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:SourceName&gt;Derived Column Output&lt;/dwd:SourceName&gt;&lt;dwd:DestinationName&gt;Flat File Destination Input&lt;/dwd:DestinationName&gt;&lt;/PipelinePath&gt;</DTS:Property>
+<DTS:Property DTS:Name="PackageVariableValue" DTS:DataType="8">&lt;PipelinePath xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:SourceName&gt;Derived Column Output&lt;/dwd:SourceName&gt;&lt;dwd:DestinationName&gt;Conditional Split Input&lt;/dwd:DestinationName&gt;&lt;/PipelinePath&gt;</DTS:Property>
 <DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
-<DTS:Property DTS:Name="ObjectName">{FE31221F-FA86-4485-9A25-1B1D3B091387}-1072</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{E2D80FC7-EAA2-457C-B5A0-263E80584BA5}</DTS:Property>
+<DTS:Property DTS:Name="ObjectName">{FE31221F-FA86-4485-9A25-1B1D3B091387}-1190</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{BBC33D15-7569-43D0-A41C-68EE75EB90E6}</DTS:Property>
+<DTS:Property DTS:Name="Description"></DTS:Property>
+<DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable>
+<DTS:PackageVariable>
+<DTS:Property DTS:Name="PackageVariableValue" DTS:DataType="8">&lt;PipelinePath xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:SourceName&gt;Customers Missing Intended Channel Information&lt;/dwd:SourceName&gt;&lt;dwd:DestinationName&gt;Flat File Destination Input&lt;/dwd:DestinationName&gt;&lt;/PipelinePath&gt;</DTS:Property>
+<DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
+<DTS:Property DTS:Name="ObjectName">{FE31221F-FA86-4485-9A25-1B1D3B091387}-1216</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{88321F8E-9C3C-4E40-B3F9-5358120A8010}</DTS:Property>
+<DTS:Property DTS:Name="Description"></DTS:Property>
+<DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable>
+<DTS:PackageVariable>
+<DTS:Property DTS:Name="PackageVariableValue" DTS:DataType="8">&lt;PipelinePath xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:SourceName&gt;Conditional Split Default Output&lt;/dwd:SourceName&gt;&lt;dwd:DestinationName&gt;Flat File Destination Input&lt;/dwd:DestinationName&gt;&lt;/PipelinePath&gt;</DTS:Property>
+<DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
+<DTS:Property DTS:Name="ObjectName">{FE31221F-FA86-4485-9A25-1B1D3B091387}-1276</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{91598954-DAEF-46A0-8F62-D553056CA05E}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable>
 <DTS:PackageVariable>
 <DTS:Property DTS:Name="PackageVariableValue" DTS:DataType="8">&lt;PipelinePath xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:SourceName&gt;Flat File Source Output&lt;/dwd:SourceName&gt;&lt;dwd:DestinationName&gt;Sort Input&lt;/dwd:DestinationName&gt;&lt;/PipelinePath&gt;</DTS:Property>
 <DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
 <DTS:Property DTS:Name="ObjectName">{FE31221F-FA86-4485-9A25-1B1D3B091387}-335</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{B4D484B6-09AD-4031-B544-3D07D58C0DB3}</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{0DA246B2-C92F-4F18-A2DC-51751E0E608C}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable>
 <DTS:PackageVariable>
 <DTS:Property DTS:Name="PackageVariableValue" DTS:DataType="8">&lt;PipelinePath xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:SourceName&gt;ADO NET Source Output&lt;/dwd:SourceName&gt;&lt;dwd:DestinationName&gt;Sort Input&lt;/dwd:DestinationName&gt;&lt;/PipelinePath&gt;</DTS:Property>
 <DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
 <DTS:Property DTS:Name="ObjectName">{FE31221F-FA86-4485-9A25-1B1D3B091387}-700</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{FCABD3F5-9CFF-4F8D-B112-48723602B19A}</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{EF486A11-772A-415E-AC86-9A0A1ED471F9}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable>
 <DTS:PackageVariable>
 <DTS:Property DTS:Name="PackageVariableValue" DTS:DataType="8">&lt;PipelinePath xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:SourceName&gt;Sort Output&lt;/dwd:SourceName&gt;&lt;dwd:DestinationName&gt;Merge Join Left Input&lt;/dwd:DestinationName&gt;&lt;/PipelinePath&gt;</DTS:Property>
 <DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
 <DTS:Property DTS:Name="ObjectName">{FE31221F-FA86-4485-9A25-1B1D3B091387}-729</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{82F2CBED-3BEA-4485-A972-F9ABF3A2643D}</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{8A187342-D0EB-4CDC-A0AA-5604497D3D62}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable>
 <DTS:PackageVariable>
 <DTS:Property DTS:Name="PackageVariableValue" DTS:DataType="8">&lt;PipelinePath xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:SourceName&gt;Sort Output&lt;/dwd:SourceName&gt;&lt;dwd:DestinationName&gt;Merge Join Right Input&lt;/dwd:DestinationName&gt;&lt;/PipelinePath&gt;</DTS:Property>
 <DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
 <DTS:Property DTS:Name="ObjectName">{FE31221F-FA86-4485-9A25-1B1D3B091387}-734</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{77D1CD2A-F612-4CDC-B8EE-076CA60C2D06}</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{AB1FDE1E-0DA3-4A1C-BF69-24E664A68B7F}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable>
 <DTS:PackageVariable>
 <DTS:Property DTS:Name="PackageVariableValue" DTS:DataType="8">&lt;PipelinePath xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:SourceName&gt;Merge Join Output&lt;/dwd:SourceName&gt;&lt;dwd:DestinationName&gt;Input 0&lt;/dwd:DestinationName&gt;&lt;/PipelinePath&gt;</DTS:Property>
 <DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
 <DTS:Property DTS:Name="ObjectName">{FE31221F-FA86-4485-9A25-1B1D3B091387}-840</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{19F6C3D5-BB16-49AB-8242-E17C9FA148D4}</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{FFD80319-DD4E-4D3A-A9B6-134CF5055CBD}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable>
 <DTS:PackageVariable>
 <DTS:Property DTS:Name="PackageVariableValue" DTS:DataType="8">&lt;PipelinePath xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:SourceName&gt;ADO NET Source Output&lt;/dwd:SourceName&gt;&lt;dwd:DestinationName&gt;Data Conversion Input&lt;/dwd:DestinationName&gt;&lt;/PipelinePath&gt;</DTS:Property>
 <DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
 <DTS:Property DTS:Name="ObjectName">{FE31221F-FA86-4485-9A25-1B1D3B091387}-927</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{D922A92F-61BA-4649-8649-58E6347909B7}</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{575C4778-530E-4951-952E-05539EE52942}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable>
 <DTS:PackageVariable>
 <DTS:Property DTS:Name="PackageVariableValue" DTS:DataType="8">&lt;PipelinePath xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:SourceName&gt;Output 0&lt;/dwd:SourceName&gt;&lt;dwd:DestinationName&gt;Conditional Split Input&lt;/dwd:DestinationName&gt;&lt;/PipelinePath&gt;</DTS:Property>
 <DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
 <DTS:Property DTS:Name="ObjectName">{FE31221F-FA86-4485-9A25-1B1D3B091387}-946</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{1135BF0C-4E49-4807-A6F4-4C56FF2040C3}</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{BEDDC39F-09B9-46EF-B37C-BD6248A2E275}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable>
 <DTS:PackageVariable>
 <DTS:Property DTS:Name="PackageVariableValue" DTS:DataType="8">&lt;PipelinePath xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:SourceName&gt;Notifiable Customers&lt;/dwd:SourceName&gt;&lt;dwd:DestinationName&gt;Merge Join Right Input&lt;/dwd:DestinationName&gt;&lt;/PipelinePath&gt;</DTS:Property>
 <DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
 <DTS:Property DTS:Name="ObjectName">{FE31221F-FA86-4485-9A25-1B1D3B091387}-965</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{062DFAFB-65A8-4971-BEB3-3F3896F72C09}</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{35AB0973-802A-4A36-9BB1-3C6EE5E3F349}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable>
 <DTS:PackageVariable>
 <DTS:Property DTS:Name="PackageVariableValue" DTS:DataType="8">&lt;PipelinePath xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:SourceName&gt;Data Conversion Output&lt;/dwd:SourceName&gt;&lt;dwd:DestinationName&gt;Sort Input&lt;/dwd:DestinationName&gt;&lt;/PipelinePath&gt;</DTS:Property>
 <DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
 <DTS:Property DTS:Name="ObjectName">{FE31221F-FA86-4485-9A25-1B1D3B091387}-973</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{83B405C9-AEF6-4B0E-A78A-9D32B0686E55}</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{31BC6B40-9111-49D0-B854-E37C30123BE0}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable>
 <DTS:PackageVariable>
 <DTS:Property DTS:Name="PackageVariableValue" DTS:DataType="8">&lt;PipelinePath xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:SourceName&gt;Sort Output&lt;/dwd:SourceName&gt;&lt;dwd:DestinationName&gt;Merge Join Left Input&lt;/dwd:DestinationName&gt;&lt;/PipelinePath&gt;</DTS:Property>
 <DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
 <DTS:Property DTS:Name="ObjectName">{FE31221F-FA86-4485-9A25-1B1D3B091387}-974</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{A58F5E36-8680-4581-8A2C-B542E116692A}</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{88C549C5-597A-4376-9D8D-C95CB392F702}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable>
 <DTS:PackageVariable>
 <DTS:Property DTS:Name="PackageVariableValue" DTS:DataType="8">&lt;PipelinePath xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:SourceName&gt;Merge Join Output&lt;/dwd:SourceName&gt;&lt;dwd:DestinationName&gt;Multicast Input 1&lt;/dwd:DestinationName&gt;&lt;/PipelinePath&gt;</DTS:Property>
 <DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
 <DTS:Property DTS:Name="ObjectName">{FE31221F-FA86-4485-9A25-1B1D3B091387}-998</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{1548345C-DCD2-4590-9EF7-9C681329009A}</DTS:Property>
-<DTS:Property DTS:Name="Description"></DTS:Property>
-<DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable>
-<DTS:PackageVariable>
-<DTS:Property DTS:Name="PackageVariableValue" DTS:DataType="8">&lt;PipelinePath xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:SourceName&gt;Multicast Output 1&lt;/dwd:SourceName&gt;&lt;dwd:DestinationName&gt;Flat File Destination Input&lt;/dwd:DestinationName&gt;&lt;/PipelinePath&gt;</DTS:Property>
-<DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
-<DTS:Property DTS:Name="ObjectName">{FE31221F-FA86-4485-9A25-1B1D3B091387}-999</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{09402D2E-E43E-460C-B8DE-544BC5BFFEDA}</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{6A04E15D-29E8-4A45-9E71-BA10607E4680}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable>
 <DTS:PackageVariable>
@@ -2991,6 +3091,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arra
 &lt;/dds&gt;&lt;/dwd:Layout&gt;&lt;dwd:PersistedViewPortTop&gt;-3009&lt;/dwd:PersistedViewPortTop&gt;&lt;/dwd:DtsControlFlowDiagram&gt;&lt;/Package&gt;</DTS:Property>
 <DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
 <DTS:Property DTS:Name="ObjectName">package-diagram</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{BBB40079-937A-4BAE-838E-9FBB6FE693C0}</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{B9C513F0-FA7E-4709-80A9-62A09B0B9E6D}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable></DTS:Executable>
