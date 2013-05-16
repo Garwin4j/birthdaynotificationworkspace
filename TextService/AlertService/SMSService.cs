@@ -11,29 +11,29 @@
 
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-[System.ServiceModel.ServiceContractAttribute(Namespace="http://ws.sms.esb.jmmb.com/", ConfigurationName="SMSService")]
-public interface ISMSService
+[System.ServiceModel.ServiceContractAttribute(Namespace = "http://ws.sms.esb.jmmb.com/", ConfigurationName = "SMSService")]
+public interface SMSService
 {
-    
-    // CODEGEN: Generating message contract since element name company from namespace  is not marked nillable
-    [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+
+    // CODEGEN: Generating message contract since element name applicationName from namespace  is not marked nillable
+    [System.ServiceModel.OperationContractAttribute(Action = "http://ws.sms.esb.jmmb.com/SMSService/sendSMS", ReplyAction = "http://ws.sms.esb.jmmb.com/SMSService/sendSMSResponse")]
     sendSMSResponse sendSMS(sendSMS request);
 }
 
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
 [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-[System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+[System.ServiceModel.MessageContractAttribute(IsWrapped = false)]
 public partial class sendSMS
 {
-    
-    [System.ServiceModel.MessageBodyMemberAttribute(Name="sendSMS", Namespace="http://ws.sms.esb.jmmb.com/", Order=0)]
+
+    [System.ServiceModel.MessageBodyMemberAttribute(Name = "sendSMS", Namespace = "http://ws.sms.esb.jmmb.com/", Order = 0)]
     public sendSMSBody Body;
-    
+
     public sendSMS()
     {
     }
-    
+
     public sendSMS(sendSMSBody Body)
     {
         this.Body = Body;
@@ -43,25 +43,29 @@ public partial class sendSMS
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
 [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-[System.Runtime.Serialization.DataContractAttribute(Namespace="")]
+[System.Runtime.Serialization.DataContractAttribute(Namespace = "")]
 public partial class sendSMSBody
 {
-    
-    [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+
+    [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue = false, Order = 0)]
+    public string applicationName;
+
+    [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue = false, Order = 1)]
     public string company;
-    
-    [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+
+    [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue = false, Order = 2)]
     public string message;
-    
-    [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+
+    [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue = false, Order = 3)]
     public string serviceNumber;
-    
+
     public sendSMSBody()
     {
     }
-    
-    public sendSMSBody(string company, string message, string serviceNumber)
+
+    public sendSMSBody(string applicationName, string company, string message, string serviceNumber)
     {
+        this.applicationName = applicationName;
         this.company = company;
         this.message = message;
         this.serviceNumber = serviceNumber;
@@ -71,17 +75,17 @@ public partial class sendSMSBody
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
 [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-[System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+[System.ServiceModel.MessageContractAttribute(IsWrapped = false)]
 public partial class sendSMSResponse
 {
-    
-    [System.ServiceModel.MessageBodyMemberAttribute(Name="sendSMSResponse", Namespace="http://ws.sms.esb.jmmb.com/", Order=0)]
+
+    [System.ServiceModel.MessageBodyMemberAttribute(Name = "sendSMSResponse", Namespace = "http://ws.sms.esb.jmmb.com/", Order = 0)]
     public sendSMSResponseBody Body;
-    
+
     public sendSMSResponse()
     {
     }
-    
+
     public sendSMSResponse(sendSMSResponseBody Body)
     {
         this.Body = Body;
@@ -94,59 +98,60 @@ public partial class sendSMSResponse
 [System.Runtime.Serialization.DataContractAttribute()]
 public partial class sendSMSResponseBody
 {
-    
+
     public sendSMSResponseBody()
     {
     }
 }
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-public interface SMSServiceChannel : ISMSService, System.ServiceModel.IClientChannel
+public interface SMSServiceChannel : SMSService, System.ServiceModel.IClientChannel
 {
 }
 
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-public partial class SMSServiceClient : System.ServiceModel.ClientBase<ISMSService>, ISMSService
+public partial class SMSServiceClient : System.ServiceModel.ClientBase<SMSService>, SMSService
 {
-    
+
     public SMSServiceClient()
     {
     }
-    
-    public SMSServiceClient(string endpointConfigurationName) : 
-            base(endpointConfigurationName)
+
+    public SMSServiceClient(string endpointConfigurationName) :
+        base(endpointConfigurationName)
     {
     }
-    
-    public SMSServiceClient(string endpointConfigurationName, string remoteAddress) : 
-            base(endpointConfigurationName, remoteAddress)
+
+    public SMSServiceClient(string endpointConfigurationName, string remoteAddress) :
+        base(endpointConfigurationName, remoteAddress)
     {
     }
-    
-    public SMSServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
-            base(endpointConfigurationName, remoteAddress)
+
+    public SMSServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) :
+        base(endpointConfigurationName, remoteAddress)
     {
     }
-    
-    public SMSServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
-            base(binding, remoteAddress)
+
+    public SMSServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) :
+        base(binding, remoteAddress)
     {
     }
-    
+
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    sendSMSResponse ISMSService.sendSMS(sendSMS request)
+    sendSMSResponse SMSService.sendSMS(sendSMS request)
     {
         return base.Channel.sendSMS(request);
     }
-    
-    public void sendSMS(string company, string message, string serviceNumber)
+
+    public void sendSMS(string applicationName, string company, string message, string serviceNumber)
     {
         sendSMS inValue = new sendSMS();
         inValue.Body = new sendSMSBody();
+        inValue.Body.applicationName = applicationName;
         inValue.Body.company = company;
         inValue.Body.message = message;
         inValue.Body.serviceNumber = serviceNumber;
-        sendSMSResponse retVal = ((ISMSService)(this)).sendSMS(inValue);
+        sendSMSResponse retVal = ((SMSService)(this)).sendSMS(inValue);
     }
 }
