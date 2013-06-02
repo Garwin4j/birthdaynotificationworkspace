@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deployment", "Deployment", "{F48908DD-23CF-43B5-98F2-96B826D96BD8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{9FC9FA3C-35A5-4221-A7B5-F7CC91410C9B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{3867057C-B77D-4CCF-84F4-2C59A6C9B34D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "External References", "External References", "{4A78DAE4-1A2E-4F64-9FF7-8E5FC940E188}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{8B490D6B-2BC5-4930-9BAE-D4A62920C726}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "JMMB_CustomerNotification", "JMMB_CustomerNotification\JMMB_CustomerNotification.sqlproj", "{89F9E1E2-404C-4999-8A9E-85B6ED80F496}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{89F9E1E2-404C-4999-8A9E-85B6ED80F496}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89F9E1E2-404C-4999-8A9E-85B6ED80F496}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89F9E1E2-404C-4999-8A9E-85B6ED80F496}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{89F9E1E2-404C-4999-8A9E-85B6ED80F496}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89F9E1E2-404C-4999-8A9E-85B6ED80F496}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89F9E1E2-404C-4999-8A9E-85B6ED80F496}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8B490D6B-2BC5-4930-9BAE-D4A62920C726} = {F48908DD-23CF-43B5-98F2-96B826D96BD8}
+		{89F9E1E2-404C-4999-8A9E-85B6ED80F496} = {8B490D6B-2BC5-4930-9BAE-D4A62920C726}
+	EndGlobalSection
+EndGlobal

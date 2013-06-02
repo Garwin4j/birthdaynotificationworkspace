@@ -1,0 +1,77 @@
+02/06/2013 09:32:02 AM	This log contains information about the import schema operation into project 'JMMB_CustomerNotification' on computer 'ELNATHAN-W7PRO' by user 'gpryce'.
+02/06/2013 09:32:02 AM	Import of database schema has started.
+02/06/2013 09:32:07 AM	Gathering database options
+02/06/2013 09:32:07 AM	Gathering users
+02/06/2013 09:32:07 AM	Gathering roles
+02/06/2013 09:32:07 AM	Gathering application roles
+02/06/2013 09:32:07 AM	Gathering role memberships
+02/06/2013 09:32:07 AM	Gathering filegroups
+02/06/2013 09:32:07 AM	Gathering files
+02/06/2013 09:32:07 AM	Gathering full-text catalogs
+02/06/2013 09:32:07 AM	Gathering assemblies
+02/06/2013 09:32:07 AM	Gathering certificates
+02/06/2013 09:32:07 AM	Gathering asymmetric keys
+02/06/2013 09:32:07 AM	Gathering symmetric keys
+02/06/2013 09:32:07 AM	Gathering encrypted symmetric keys
+02/06/2013 09:32:07 AM	Gathering database encryption keys
+02/06/2013 09:32:07 AM	Gathering schemas
+02/06/2013 09:32:07 AM	Gathering XML schema collections
+02/06/2013 09:32:07 AM	Gathering user-defined data types
+02/06/2013 09:32:07 AM	Gathering user-defined types
+02/06/2013 09:32:07 AM	Gathering table types
+02/06/2013 09:32:07 AM	Gathering unique keys for table types
+02/06/2013 09:32:07 AM	Gathering primary keys for table types
+02/06/2013 09:32:07 AM	Gathering check constraints for table types
+02/06/2013 09:32:07 AM	Gathering default constraints for table types
+02/06/2013 09:32:07 AM	Gathering partition functions
+02/06/2013 09:32:07 AM	Gathering partition schemes
+02/06/2013 09:32:07 AM	Gathering functions
+02/06/2013 09:32:07 AM	Gathering encrypted functions
+02/06/2013 09:32:07 AM	Gathering aggregates
+02/06/2013 09:32:07 AM	Gathering procedures
+02/06/2013 09:32:07 AM	Gathering encrypted procedures
+02/06/2013 09:32:07 AM	Gathering tables
+02/06/2013 09:32:07 AM	Gathering primary keys
+02/06/2013 09:32:07 AM	Gathering unique constraints
+02/06/2013 09:32:07 AM	Gathering foreign keys
+02/06/2013 09:32:07 AM	Gathering default constraints
+02/06/2013 09:32:07 AM	Gathering check constraints
+02/06/2013 09:32:07 AM	Gathering views
+02/06/2013 09:32:07 AM	Gathering encrypted views
+02/06/2013 09:32:07 AM	Gathering indexes
+02/06/2013 09:32:07 AM	Gathering statistics
+02/06/2013 09:32:07 AM	Gathering full-text index stoplists
+02/06/2013 09:32:07 AM	Gathering search property lists
+02/06/2013 09:32:07 AM	Gathering search properties
+02/06/2013 09:32:07 AM	Gathering full-text indexes
+02/06/2013 09:32:07 AM	Gathering column store indexes
+02/06/2013 09:32:07 AM	Gathering spatial indexes
+02/06/2013 09:32:07 AM	Gathering XML indexes
+02/06/2013 09:32:07 AM	Gathering Selective XML indexes
+02/06/2013 09:32:07 AM	Gathering encrypted triggers
+02/06/2013 09:32:07 AM	Gathering triggers
+02/06/2013 09:32:07 AM	Gathering encrypted and clr ddl triggers
+02/06/2013 09:32:07 AM	Gathering ddl triggers
+02/06/2013 09:32:07 AM	Gathering synonyms
+02/06/2013 09:32:07 AM	Gathering defaults
+02/06/2013 09:32:07 AM	Gathering data constraint uddt bindings
+02/06/2013 09:32:07 AM	Gathering rules
+02/06/2013 09:32:07 AM	Gathering data constraint uddt bindings
+02/06/2013 09:32:07 AM	Gathering message types
+02/06/2013 09:32:08 AM	Gathering queues
+02/06/2013 09:32:08 AM	Gathering contracts
+02/06/2013 09:32:08 AM	Gathering services
+02/06/2013 09:32:08 AM	Gathering routes
+02/06/2013 09:32:08 AM	Gathering event notifications
+02/06/2013 09:32:08 AM	Gathering remote service bindings
+02/06/2013 09:32:08 AM	Gathering broker priorities
+02/06/2013 09:32:08 AM	Gathering database audit specifications
+02/06/2013 09:32:08 AM	Gathering signatures
+02/06/2013 09:32:08 AM	Gathering data compression options
+02/06/2013 09:32:08 AM	Gathering sequence types
+02/06/2013 09:32:08 AM	Gathering extended properties
+02/06/2013 09:32:08 AM	Scanning project for duplicate elements
+02/06/2013 09:32:08 AM	Finished duplicate element processing
+02/06/2013 09:32:08 AM	Finished importing database.
+02/06/2013 09:32:08 AM	A summary of the import was saved to the following location: L:\Projects\birthdaynotificationworkspace\MessageNotificationConsole\JMMB_CustomerNotification\Import Schema Logs\JMMB_CustomerNotific_20130602023202.log
+02/06/2013 09:32:08 AM	Click Finish to continue...
