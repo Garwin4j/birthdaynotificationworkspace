@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "External References", "Exte
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{8B490D6B-2BC5-4930-9BAE-D4A62920C726}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "JMMB_CustomerNotification", "JMMB_CustomerNotification\JMMB_CustomerNotification.sqlproj", "{89F9E1E2-404C-4999-8A9E-85B6ED80F496}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "JMMB_CustomerNotification", "deploy\JMMB_CustomerNotification\JMMB_CustomerNotification.sqlproj", "{89F9E1E2-404C-4999-8A9E-85B6ED80F496}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[SSIS Configurations] (
+﻿CREATE TABLE [dbo].[SSISConfigurations] (
     [ConfigurationFilter] NVARCHAR (255) NOT NULL,
     [ConfiguredValue]     NVARCHAR (255) NULL,
     [PackagePath]         NVARCHAR (255) NOT NULL,

@@ -65,7 +65,7 @@
   <ItemGroup>
     <Build Include="Tables\CLIENT.sql" />
     <Build Include="Tables\Notifications.sql" />
-    <Build Include="Tables\SSIS Configurations.sql" />
+    <Build Include="Tables\SSISConfigurations.sql" />
     <Build Include="Tables\Exceptions.sql" />
     <Build Include="Tables\MissingInformation.sql" />
     <Build Include="Tables\MessageLog.sql" />
