@@ -1,0 +1,26 @@
+﻿<div>
+    <div class="page-header">
+        <h1>Notifications list</h1>
+    </div>
+    <div>
+        <h5 data-ng-if="!dataRetrived">Loading....</h5>
+    </div>
+     <table class="table clickable" data-ng-if="notifications">
+         <thead>
+             <tr>
+                 <th>Name</th>
+                 <th>Description</th>
+                 <th>Active</th>
+                 <th></th>
+             </tr>
+         </thead>
+         <tbody>
+             <tr data-ng-click="editNotifications(notification)" data-ng-repeat="notification in notifications">
+                 <td>{{notification.Name}}</td>
+                 <td>{{notification.Description}}</td>
+                 <td><i data-ng-class="{'fa fa-check-square-o': notification.Active, 'fa fa-square-o': !notification.Active}"></i></td>
+                 <td><i class="fa fa-arrow-right" title="edit" ></i></td>
+             </tr>
+         </tbody>
+     </table>
+</div>
