@@ -3,7 +3,8 @@
         <h1>Notifications list</h1>
     </div>
     <div>
-        <h5 data-ng-if="!dataRetrived">Loading....</h5>
+        <input ng-model="filtertext.Name" />
+        <h5 data-ng-if="!dataRetrived"><i class="fa fa-spinner fa-spin"></i> Loading</h5>
     </div>
      <table class="table clickable" data-ng-if="notifications">
          <thead>
@@ -15,7 +16,7 @@
              </tr>
          </thead>
          <tbody>
-             <tr data-ng-click="editNotifications(notification)" data-ng-repeat="notification in notifications">
+             <tr data-ng-click="editNotifications(notification)" data-ng-repeat="notification in notifications | filter:filtertext">
                  <td>{{notification.Name}}</td>
                  <td>{{notification.Description}}</td>
                  <td><i data-ng-class="{'fa fa-check-square-o': notification.Active, 'fa fa-square-o': !notification.Active}"></i></td>

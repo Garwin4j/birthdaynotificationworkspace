@@ -30,8 +30,8 @@ namespace MessageNotification.Web.Controllers
         {
             if (value.NotificationId > 0 && context.Notifications.Any(x => x.NotificationId == value.NotificationId))
             {
-                context.Notifications.Attach(value);
-                context.Entry<Notification>(value).State = System.Data.Entity.EntityState.Modified;
+                var entity = context.Notifications.Attach(value);
+                context.Entry<Notification>(entity).State = System.Data.Entity.EntityState.Modified;
             }
             else
             {
