@@ -24,6 +24,10 @@ table.table.clickable tbody tr:hover{
     opacity:1;
 }
 
+.validation-error{
+    color:#ba0606;
+}
+
 /*.ng-enter, 
 .ng-leave
 { 

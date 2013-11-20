@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -28,15 +29,9 @@ namespace MessageNotification.Web.Controllers
         // POST api/notifications
         public void Post([FromBody]Notification value)
         {
-            if (value.NotificationId > 0 && context.Notifications.Any(x => x.NotificationId == value.NotificationId))
-            {
-                var entity = context.Notifications.Attach(value);
-                context.Entry<Notification>(entity).State = System.Data.Entity.EntityState.Modified;
-            }
-            else
-            {
-                context.Notifications.Add(value);
-            }
+            context.Entry(value).State = value.NotificationId <= 0 ?
+                                    EntityState.Added :
+                                    EntityState.Modified;
 
             context.SaveChanges();
             

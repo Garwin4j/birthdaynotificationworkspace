@@ -3,6 +3,7 @@
 
     function init() {
         $scope.notification = dataService.currentNotification;
+        $scope.isSaving = false;
         $scope.tinymceOptions = {
             plugins: [
                 "advlist autolink lists link image charmap print preview anchor",
@@ -15,12 +16,23 @@
 
     $scope.saveNotification = function ()
     {
-        $scope.notification.$save();
-        $location.path("/notifications");
+        $scope.isSaving = true;
+        $scope.notification.$save(
+            function () {
+                
+                $location.path("/notifications");
+            });
+
     }
 
     $scope.cancel = function ()
     {
         $location.path("/notifications");
     }
+
+    $scope.canSave = function ()
+    {
+        return $scope.notificationForm.$dirty && $scope.notificationForm.$valid && !$scope.isSaving;
+    }
+
 });

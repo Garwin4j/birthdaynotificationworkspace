@@ -8,7 +8,7 @@ namespace MessageNotification.Data.Models.Mapping
         public NotificationMap()
         {
             // Primary Key
-            this.HasKey(t => new { t.NotificationId, t.Name, t.CustomerContactFilePath, t.Active });
+            this.HasKey(t => new { t.NotificationId });
 
             // Properties
             this.Property(t => t.NotificationId)
