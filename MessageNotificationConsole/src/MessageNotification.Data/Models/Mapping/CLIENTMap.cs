@@ -11,8 +11,7 @@ namespace MessageNotification.Data.Models.Mapping
             this.HasKey(t => t.CustomerID);
 
             // Properties
-            this.Property(t => t.CustomerID)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+            this.Property(t => t.CustomerID);
 
             this.Property(t => t.Last_Name)
                 .IsFixedLength()

@@ -11,8 +11,7 @@ namespace MessageNotification.Data.Models.Mapping
             this.HasKey(t => new { t.NotificationId });
 
             // Properties
-            this.Property(t => t.NotificationId)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            this.Property(t => t.NotificationId);
 
             this.Property(t => t.Name)
                 .IsRequired()

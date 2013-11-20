@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deployment", "Deployment", "{F48908DD-23CF-43B5-98F2-96B826D96BD8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{9FC9FA3C-35A5-4221-A7B5-F7CC91410C9B}"
@@ -16,6 +18,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageNotification.Web", "src\MessageNotification.Web\MessageNotification.Web.csproj", "{B3D2E4F9-8954-439D-976C-EE9313637252}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageNotification.Data", "src\MessageNotification.Data\MessageNotification.Data.csproj", "{E512C7DE-F567-4ED1-A3A7-E29B4D4885D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageNotification.Web2", "src\MessageNotification.Web2\MessageNotification.Web2.csproj", "{0C2F6CD2-2800-454E-A6BC-768FF8FCB03D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +40,10 @@ Global
 		{E512C7DE-F567-4ED1-A3A7-E29B4D4885D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E512C7DE-F567-4ED1-A3A7-E29B4D4885D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E512C7DE-F567-4ED1-A3A7-E29B4D4885D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C2F6CD2-2800-454E-A6BC-768FF8FCB03D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C2F6CD2-2800-454E-A6BC-768FF8FCB03D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C2F6CD2-2800-454E-A6BC-768FF8FCB03D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C2F6CD2-2800-454E-A6BC-768FF8FCB03D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,6 +52,7 @@ Global
 		{8B490D6B-2BC5-4930-9BAE-D4A62920C726} = {F48908DD-23CF-43B5-98F2-96B826D96BD8}
 		{B3D2E4F9-8954-439D-976C-EE9313637252} = {9FC9FA3C-35A5-4221-A7B5-F7CC91410C9B}
 		{E512C7DE-F567-4ED1-A3A7-E29B4D4885D2} = {9FC9FA3C-35A5-4221-A7B5-F7CC91410C9B}
+		{0C2F6CD2-2800-454E-A6BC-768FF8FCB03D} = {9FC9FA3C-35A5-4221-A7B5-F7CC91410C9B}
 		{89F9E1E2-404C-4999-8A9E-85B6ED80F496} = {8B490D6B-2BC5-4930-9BAE-D4A62920C726}
 	EndGlobalSection
 EndGlobal
