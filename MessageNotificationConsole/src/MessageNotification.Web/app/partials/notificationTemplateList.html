@@ -1,0 +1,41 @@
+﻿<div>
+    <div class="page-header row">
+        <div class="col-md-10">
+            <h1>Notifications list</h1>
+        </div>
+        <div class="col-md-2">
+            <button type="button" data-ng-click="newNotification()" class="btn btn-lg btn-success btn-block">New Notification</button>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="row">
+           
+            <div class="col-md-12">
+                <div>
+                    filter
+            <input ng-model="filtertext.Name" />
+                    <h5 data-ng-if="!dataRetrived"><i class="fa fa-spinner fa-spin"></i>Loading</h5>
+                </div>
+                <table class="table clickable" data-ng-if="notifications">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Active</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-ng-click="editNotifications(notification)" data-ng-repeat="notification in notifications | filter:filtertext">
+                            <td>{{notification.Name}}</td>
+                            <td>{{notification.Description}}</td>
+                            <td><i data-ng-class="{'fa fa-check-square-o': notification.Active, 'fa fa-square-o': !notification.Active}"></i></td>
+                            <td><i class="fa fa-arrow-right" title="edit"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

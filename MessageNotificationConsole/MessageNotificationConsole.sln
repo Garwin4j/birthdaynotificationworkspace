@@ -17,6 +17,8 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "JMMB_CustomerNotification",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageNotification.Data", "src\MessageNotification.Data\MessageNotification.Data.csproj", "{E512C7DE-F567-4ED1-A3A7-E29B4D4885D2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageNotification.Web", "src\MessageNotification.Web\MessageNotification.Web.csproj", "{C64550F9-199A-41AB-871B-C9C1D789FF5E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{E512C7DE-F567-4ED1-A3A7-E29B4D4885D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E512C7DE-F567-4ED1-A3A7-E29B4D4885D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E512C7DE-F567-4ED1-A3A7-E29B4D4885D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C64550F9-199A-41AB-871B-C9C1D789FF5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C64550F9-199A-41AB-871B-C9C1D789FF5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C64550F9-199A-41AB-871B-C9C1D789FF5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C64550F9-199A-41AB-871B-C9C1D789FF5E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +45,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{8B490D6B-2BC5-4930-9BAE-D4A62920C726} = {F48908DD-23CF-43B5-98F2-96B826D96BD8}
 		{E512C7DE-F567-4ED1-A3A7-E29B4D4885D2} = {9FC9FA3C-35A5-4221-A7B5-F7CC91410C9B}
+		{C64550F9-199A-41AB-871B-C9C1D789FF5E} = {9FC9FA3C-35A5-4221-A7B5-F7CC91410C9B}
 		{89F9E1E2-404C-4999-8A9E-85B6ED80F496} = {8B490D6B-2BC5-4930-9BAE-D4A62920C726}
 	EndGlobalSection
 EndGlobal
